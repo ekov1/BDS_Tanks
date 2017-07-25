@@ -4,13 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TanksGame
+namespace TanksGame.Enums
 {
-    class EntryPoint
+    public enum Direction
     {
-        static void Main(string[] args)
-        {
-            // game.Run()
-        }
+        Top,
+        Right,
+        Down,
+        Left
     }
 }

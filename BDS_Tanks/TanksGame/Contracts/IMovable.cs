@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TanksGame
+namespace TanksGame.Contracts
 {
-    class EntryPoint
+    interface IMovable
     {
-        static void Main(string[] args)
-        {
-            // game.Run()
-        }
     }
 }

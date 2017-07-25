@@ -42,11 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Contracts\IMovable.cs" />
+    <Compile Include="Contracts\IProjectile.cs" />
+    <Compile Include="Contracts\ITank.cs" />
+    <Compile Include="Enums\Direction.cs" />
+    <Compile Include="Environment\UnitBody.cs" />
+    <Compile Include="NPC\EnemyTank.cs" />
     <Compile Include="EntryPoint.cs" />
+    <Compile Include="Player\PlayerTank.cs" />
+    <Compile Include="Projectiles\MachineGun.cs" />
+    <Compile Include="Projectiles\Projectile.cs" />
+    <Compile Include="Projectiles\Rocket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tank.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Effects\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

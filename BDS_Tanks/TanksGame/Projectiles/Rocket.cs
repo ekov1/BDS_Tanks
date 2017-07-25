@@ -3,14 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TanksGame.Contracts;
 
-namespace TanksGame
+namespace TanksGame.Projectiles
 {
-    class EntryPoint
+    public class Rocket : Projectile
     {
-        static void Main(string[] args)
-        {
-            // game.Run()
-        }
+
     }
 }

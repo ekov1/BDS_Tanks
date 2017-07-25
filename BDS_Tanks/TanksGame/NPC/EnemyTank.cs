@@ -4,13 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TanksGame
+namespace TanksGame.NPC
 {
-    class EntryPoint
+    public class EnemyTank
     {
-        static void Main(string[] args)
-        {
-            // game.Run()
-        }
+
     }
 }

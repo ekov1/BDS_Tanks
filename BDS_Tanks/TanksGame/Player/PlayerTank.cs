@@ -4,13 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TanksGame
+namespace TanksGame.Player
 {
-    class EntryPoint
+    class PlayerTank
     {
-        static void Main(string[] args)
-        {
-            // game.Run()
-        }
     }
 }
