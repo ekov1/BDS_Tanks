@@ -5,22 +5,34 @@ using System.Text;
 using System.Threading.Tasks;
 using TanksGame.Common;
 using TanksGame.Contracts;
+using TanksGame.Environment;
+using TanksGame.Projectiles;
+using TanksGame.UI;
 
 namespace TanksGame
 {
-    public abstract class Tank
+    public abstract class Tank : IMovable, IDrawable
     {
-        public Tank(int x, int y, IProjectile weapon)
+        public Tank(int x, int y, UnitBody unitBody,IProjectile weapon)
         {
-            this.Position.X = x;
-            this.Position.Y = y;
-            this.Weapon = weapon;
+            this.X = x;
+            this.Y = y;
+            this.UnitBody = unitBody;
+            this.Weapon = new MachineGun();
         }
-
-        public Position Position { get; set; }
 
         // will determine the damage
         public IProjectile Weapon { get; set; }
 
+        public int X { get; set; }
+
+        public int Y { get; set; }
+        public UnitBody UnitBody { get; set; }
+
+        public void Move(int offsetX, int offsetY)
+        {
+            this.X += offsetX;
+            this.Y += offsetY;
+        }
     }
 }

@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TanksGame.Contracts;
 
-namespace TanksGame.Contracts
+namespace TanksGame.UI
 {
-    interface IMovable
+    public interface IDrawer
     {
-        void Move(int offsetX, int offsetY);
+        void Draw(IDrawable obj);
     }
 }

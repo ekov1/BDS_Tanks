@@ -44,9 +44,12 @@
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Position.cs" />
+    <Compile Include="UI\ConsoleDrawer.cs" />
+    <Compile Include="UI\Contracts\IDrawable.cs" />
     <Compile Include="Contracts\IMovable.cs" />
     <Compile Include="Contracts\IProjectile.cs" />
     <Compile Include="Contracts\ITank.cs" />
+    <Compile Include="UI\Contracts\IDrawer.cs" />
     <Compile Include="Core\Contracts\IEnemies.cs" />
     <Compile Include="Core\Contracts\IEngine.cs" />
     <Compile Include="Core\Engine.cs" />
@@ -68,7 +71,6 @@
   <ItemGroup>
     <Folder Include="Effects\" />
     <Folder Include="Resources\" />
-    <Folder Include="UI\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
