@@ -3,20 +3,24 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TanksGame.Common;
 using TanksGame.Contracts;
 
 namespace TanksGame
 {
     public abstract class Tank
     {
-        // will determine the damage
-        IProjectile weapon;
-
-        public Tank(IProjectile weapon)
+        public Tank(int x, int y, IProjectile weapon)
         {
-            this.weapon = weapon;
+            this.Position.X = x;
+            this.Position.Y = y;
+            this.Weapon = weapon;
         }
 
-        // Change weapon
+        public Position Position { get; set; }
+
+        // will determine the damage
+        public IProjectile Weapon { get; set; }
+
     }
 }

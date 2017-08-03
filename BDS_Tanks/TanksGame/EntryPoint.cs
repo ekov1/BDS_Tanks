@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TanksGame.Core;
 
 namespace TanksGame
 {
@@ -10,7 +11,7 @@ namespace TanksGame
     {
         static void Main(string[] args)
         {
-            // game.Run()
+            Engine.Instance.Run();
         }
     }
 }

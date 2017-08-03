@@ -43,9 +43,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Common\Position.cs" />
     <Compile Include="Contracts\IMovable.cs" />
     <Compile Include="Contracts\IProjectile.cs" />
     <Compile Include="Contracts\ITank.cs" />
+    <Compile Include="Core\Contracts\IEnemies.cs" />
+    <Compile Include="Core\Contracts\IEngine.cs" />
+    <Compile Include="Core\Engine.cs" />
+    <Compile Include="Core\Providers\Enemies.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Environment\UnitBody.cs" />
     <Compile Include="NPC\EnemyTank.cs" />
