@@ -23,13 +23,14 @@ namespace TanksGame.UI
             int cursorX = obj.X;
             int cursorY = obj.Y;
 
-            for (int i = 0; i < body.GetLength(0); i++)
+            for (int i = 0; i < body.Count(); i++)
             {
                 Console.SetCursorPosition(cursorX, cursorY);
-                for (int j = 0; j < body.GetLength(1); j++)
+                foreach (bool bit in body[i])
                 {
-                    Console.Write(body[i, j] ? obj.UnitBody.Fill : ' ');
+                    Console.Write(bit ? obj.UnitBody.Fill : ' ');
                 }
+                
                 cursorY++;
                 Console.WriteLine();
             }
