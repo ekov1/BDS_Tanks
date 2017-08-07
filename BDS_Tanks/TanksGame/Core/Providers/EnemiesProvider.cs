@@ -5,16 +5,16 @@ using TanksGame.Player;
 
 namespace TanksGame.Core.Providers
 {
-    public class Enemies : IEnemies
+    public class EnemiesProvider : IEnemiesProvider
     {
-        private static readonly Enemies instance = new Enemies();
+        private static readonly EnemiesProvider instance = new EnemiesProvider();
 
-        private Enemies()
+        private EnemiesProvider()
         {
             this.EnemyTanks = new List<Tank>();
         }
         
-        public static Enemies Instance
+        public static EnemiesProvider Instance
         {
             get
             {

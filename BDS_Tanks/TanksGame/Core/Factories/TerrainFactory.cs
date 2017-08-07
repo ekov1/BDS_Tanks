@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using TanksGame.Contracts;
 using TanksGame.Environment.Terrains;
 
-namespace TanksGame.Factories
+namespace TanksGame.Core.Factories
 {
     public class TerrainFactory : ITerrainFactory
     {

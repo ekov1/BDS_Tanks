@@ -19,26 +19,22 @@ namespace TanksGame.Core
     public class Engine : IEngine
     {
         private static readonly IEngine instance = new Engine();
-
-
-        // TODO: extract to providers
-        private readonly ICollection<Tank> enemiesTanks;
-        private readonly ICollection<Terrain> terrain;
-
-
-        // ??
+        
+        private readonly IEnemiesProvider enemies;
+        private readonly ITerrainProvider terrain;
+        
         private readonly ITank player;
         private readonly IDrawer drawer;
 
         private Engine()
         {
-            Texture playerBody = new Texture(TerrainGenerator.TankBody, '|', ConsoleColor.Green);
-
-            this.player = new Tank(10, 10, playerBody, null);
-            this.enemiesTanks = new List<Tank>();
-            this.terrain = new List<Terrain>();
-
+            this.enemies = EnemiesProvider.Instance;
+            this.terrain = TerrainProvider.Instance;
+            
             this.drawer = new ConsoleDrawer();
+
+            Texture playerBody = new Texture(TerrainGenerator.TankBody, '|', ConsoleColor.Green);
+            this.player = new Tank(10, 10, playerBody, null);
         }
 
         public static IEngine Instance
@@ -76,8 +72,7 @@ namespace TanksGame.Core
                             break;
                     }
                 }
-
-                //drawer.Draw(border);
+                
                 drawer.Draw(this.player);
 
                 Thread.Sleep(Constants.ThreadSleep);
