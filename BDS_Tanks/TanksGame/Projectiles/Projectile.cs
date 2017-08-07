@@ -12,7 +12,7 @@ namespace TanksGame.Projectiles
     public abstract class Projectile : IProjectile
     {
         private Direction direction;
-        private UnitBody body; // interface ?
+        private Texture body; // interface ?
         private int speed;
         private int damage;
         private bool canBreakWall;

@@ -9,7 +9,7 @@ namespace TanksGame.UI
 {
     public interface IDrawable
     {
-        UnitBody UnitBody { get; set; }
+        Texture Texture { get; set; }
         int X { get; set; }
         int Y { get; set; }
     }

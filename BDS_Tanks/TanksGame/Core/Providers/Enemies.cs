@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TanksGame.Core.Contracts;
+using TanksGame.Player;
 
 namespace TanksGame.Core.Providers
 {

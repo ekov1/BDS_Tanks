@@ -9,15 +9,15 @@ using TanksGame.Environment;
 using TanksGame.Projectiles;
 using TanksGame.UI;
 
-namespace TanksGame
+namespace TanksGame.Player
 {
-    public abstract class Tank : IMovable, IDrawable
+    public class Tank : ITank  
     {
-        public Tank(int x, int y, UnitBody unitBody,IProjectile weapon)
+        public Tank(int x, int y, Texture texture,IProjectile weapon)
         {
             this.X = x;
             this.Y = y;
-            this.UnitBody = unitBody;
+            this.Texture = texture;
             this.Weapon = new MachineGun();
         }
 
@@ -27,7 +27,8 @@ namespace TanksGame
         public int X { get; set; }
 
         public int Y { get; set; }
-        public UnitBody UnitBody { get; set; }
+
+        public Texture Texture { get; set; }
 
         public void Move(int offsetX, int offsetY)
         {

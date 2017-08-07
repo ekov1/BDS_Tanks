@@ -6,9 +6,11 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using TanksGame.Common;
+using TanksGame.Contracts;
 using TanksGame.Core.Contracts;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
+using TanksGame.Environment.Terrains;
 using TanksGame.Player;
 using TanksGame.UI;
 
@@ -18,19 +20,26 @@ namespace TanksGame.Core
     {
         private static readonly IEngine instance = new Engine();
 
-        private readonly Tank player;
-        private readonly IEnemies enemies;
+
+        // TODO: extract to providers
+        private readonly ICollection<Tank> enemiesTanks;
+        private readonly ICollection<Terrain> terrain;
+
+
+        // ??
+        private readonly ITank player;
         private readonly IDrawer drawer;
 
         private Engine()
         {
-            UnitBody playerBody = new UnitBody(new List<IEnumerable<bool>> { new bool[] { false, true, false }, new bool[] { true, true, true }, new bool[] { true, true, true } }, '*', ConsoleColor.Green);
+            Texture playerBody = new Texture(TerrainGenerator.TankBody, '|', ConsoleColor.Green);
 
-            this.player = new PlayerTank(10, 10, playerBody, null);
-            this.enemies = Enemies.Instance;
+            this.player = new Tank(10, 10, playerBody, null);
+            this.enemiesTanks = new List<Tank>();
+            this.terrain = new List<Terrain>();
+
             this.drawer = new ConsoleDrawer();
         }
-
 
         public static IEngine Instance
         {
@@ -40,10 +49,9 @@ namespace TanksGame.Core
             }
         }
 
-
         public void Run()
         {
-            Border border = new Border();
+            //Border border = new Border();
             while (true)
             {
                 if (Console.KeyAvailable)
@@ -70,8 +78,8 @@ namespace TanksGame.Core
                 }
 
                 //drawer.Draw(border);
-
                 drawer.Draw(this.player);
+
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();
             }

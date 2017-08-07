@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TanksGame.Player;
+using TanksGame.Environment.Terrains;
 
-namespace TanksGame.Core.Contracts
+namespace TanksGame.Contracts
 {
-    public interface IEnemies
+    public interface ITerrainFactory
     {
-        ICollection<Tank> EnemyTanks { get; }
+        Terrain GetTerrain();
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TanksGame.Contracts
 {
-    interface IMovable
+    public interface IMovable
     {
         void Move(int offsetX, int offsetY);
     }

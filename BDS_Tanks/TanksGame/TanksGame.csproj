@@ -44,7 +44,15 @@
   <ItemGroup>
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Common\Position.cs" />
+    <Compile Include="Contracts\ITerrainFactory.cs" />
+    <Compile Include="Core\Contracts\ITerrain.cs" />
     <Compile Include="Environment\Border.cs" />
+    <Compile Include="Environment\TerrainGenerator.cs" />
+    <Compile Include="Environment\Terrains\Brick.cs" />
+    <Compile Include="Environment\Terrains\Stone.cs" />
+    <Compile Include="Environment\Terrains\Terrain.cs" />
+    <Compile Include="Environment\Terrains\Water.cs" />
+    <Compile Include="Factories\TerrainFactory.cs" />
     <Compile Include="UI\ConsoleDrawer.cs" />
     <Compile Include="UI\Contracts\IDrawable.cs" />
     <Compile Include="Contracts\IMovable.cs" />
@@ -57,20 +65,19 @@
     <Compile Include="Core\Providers\Enemies.cs" />
     <Compile Include="Enums\Direction.cs" />
     <Compile Include="Environment\UnitBody.cs" />
-    <Compile Include="NPC\EnemyTank.cs" />
     <Compile Include="EntryPoint.cs" />
-    <Compile Include="Player\PlayerTank.cs" />
     <Compile Include="Projectiles\MachineGun.cs" />
     <Compile Include="Projectiles\Projectile.cs" />
     <Compile Include="Projectiles\Rocket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tank.cs" />
+    <Compile Include="Player\Tank.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Effects\" />
+    <Folder Include="NPC\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
