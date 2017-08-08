@@ -32,6 +32,10 @@ namespace TanksGame.Player
 
         public void Move(int offsetX, int offsetY)
         {
+            // limits
+            // width (X) = Console.LargestWindowWidth 
+            // height (Y) = Console.LargestWindowHeight
+
             this.X += offsetX;
             this.Y += offsetY;
         }
