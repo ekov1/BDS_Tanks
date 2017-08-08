@@ -66,19 +66,19 @@ namespace TanksGame.Core
                     switch (keyInfo)
                     {
                         case ConsoleKey.W:
-                            this.player.Move(0, -Constants.PlayerHeight);
+                            this.player.Move(0, -Constants.PlayerWidth);
                             break;
 
                         case ConsoleKey.A:
-                            this.player.Move(-Constants.PlayerHeight, 0);
+                            this.player.Move(-Constants.PlayerWith, 0);
                             break;
 
                         case ConsoleKey.S:
-                            this.player.Move(0, Constants.PlayerHeight);
+                            this.player.Move(0, Constants.PlayerWidth);
                             break;
 
                         case ConsoleKey.D:
-                            this.player.Move(Constants.PlayerHeight, 0);
+                            this.player.Move(Constants.PlayerWidth, 0);
                             break;
                     }
                 }

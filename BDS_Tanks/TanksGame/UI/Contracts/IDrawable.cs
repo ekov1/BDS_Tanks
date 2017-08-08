@@ -4,7 +4,7 @@ namespace TanksGame.UI
 {
     public interface IDrawable
     {
-        Texture Texture { get; set; }
+        Texture Texture { get;  }
         int X { get; set; }
         int Y { get; set; }
     }

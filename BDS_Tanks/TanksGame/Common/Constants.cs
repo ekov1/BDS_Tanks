@@ -9,7 +9,7 @@
         public const int ConsoleWidth = 100;
         public const int ConsoleHeight = 50;
 
-        public const int PlayerHeight = 4;
+        public const int PlayerWidth = 4;
         public const int PlayerWith = 5;
 
         public const int TerrainWidth = 5;

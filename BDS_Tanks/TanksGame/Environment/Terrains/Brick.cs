@@ -10,11 +10,29 @@ namespace TanksGame.Environment.Terrains
     public class Brick : Terrain
     {
         public Brick(int startX, int startY)
-            : base(startX, startY,
-                  new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '▓', ConsoleColor.Red),
-                  false, true)
+            : base(startX, startY)
         {
-
+        }
+        public override Texture Texture
+        {
+            get
+            {
+                return new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '▓', ConsoleColor.Red); ;
+            }
+        }
+        public override bool IsPassable
+        {
+            get
+            {
+                return false;
+            }
+        }
+        public override bool IsDestructable
+        {
+            get
+            {
+                return true;
+            }
         }
     }
 }

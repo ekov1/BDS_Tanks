@@ -5,29 +5,26 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TanksGame.Core.Contracts;
+using TanksGame.UI;
 
 namespace TanksGame.Environment.Terrains
 {
-    public abstract class Terrain : ITerrain
+    public abstract class Terrain : ITerrain, IDrawable
     {
-        public Terrain(int startX, int startY, Texture texture, bool isPassable, bool isDestructable)
+        public Terrain(int startX, int startY)
         {
             this.X = startX;
             this.Y = startY;
-            this.Texture = texture;
-            this.IsPassable = isPassable;
-            this.IsDestructable = isDestructable;
         }
-
 
         public int X { get; set; }
 
-        public int Y { get;  set; }
+        public int Y { get; set; }
 
-        public Texture Texture { get; set; }
+        public abstract Texture Texture { get;  }
 
-        public bool IsPassable { get; protected set; }
-
-        public bool IsDestructable { get; protected set; }
+        public abstract bool IsPassable { get; }
+               
+        public abstract bool IsDestructable { get; }
     }
 }
