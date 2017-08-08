@@ -9,6 +9,6 @@ namespace TanksGame.Contracts
 {
     public interface ITerrainFactory
     {
-        Terrain GetTerrain();
+        Terrain CreateTerrain();
     }
 }

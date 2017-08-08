@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\Providers\BoolTemplateReader.cs" />
     <Compile Include="Common\Constants.cs" />
+    <Compile Include="Core\Contracts\IBoolTemplateReader.cs" />
     <Compile Include="Common\Position.cs" />
     <Compile Include="Contracts\ITerrainFactory.cs" />
     <Compile Include="Core\Contracts\IEnemiesProvider.cs" />
@@ -58,6 +60,7 @@
     <Compile Include="Environment\Terrains\Terrain.cs" />
     <Compile Include="Environment\Terrains\Water.cs" />
     <Compile Include="Core\Factories\TerrainFactory.cs" />
+    <Compile Include="Environment\Texture.cs" />
     <Compile Include="UI\ConsoleDrawer.cs" />
     <Compile Include="UI\Contracts\IDrawable.cs" />
     <Compile Include="Contracts\IMovable.cs" />
@@ -68,7 +71,6 @@
     <Compile Include="Core\Engine.cs" />
     <Compile Include="Core\Providers\EnemiesProvider.cs" />
     <Compile Include="Enums\Direction.cs" />
-    <Compile Include="Environment\UnitBody.cs" />
     <Compile Include="EntryPoint.cs" />
     <Compile Include="Projectiles\MachineGun.cs" />
     <Compile Include="Projectiles\Projectile.cs" />

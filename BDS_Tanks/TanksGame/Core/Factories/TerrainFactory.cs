@@ -10,20 +10,7 @@ namespace TanksGame.Core.Factories
 {
     public class TerrainFactory : ITerrainFactory
     {
-        private static TerrainFactory instance = new TerrainFactory();
-
-        private TerrainFactory() { }
-
-        public static TerrainFactory Instance
-        {
-            get
-            {
-                return instance;
-            }
-        }
-
-        
-        public Terrain GetTerrain()
+        public Terrain CreateTerrain()
         {
             throw new NotImplementedException();
         }

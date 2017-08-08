@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using TanksGame.Common;
 using TanksGame.Contracts;
 using TanksGame.Core.Contracts;
+using TanksGame.Core.Factories;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
 using TanksGame.Environment.Terrains;
@@ -22,7 +23,9 @@ namespace TanksGame.Core
         
         private readonly IEnemiesProvider enemies;
         private readonly ITerrainProvider terrain;
-        
+        private readonly IBoolTemplateProvider boolTemplateProvider;
+
+        private readonly ITankFactory tankFactory;
         private readonly ITank player;
         private readonly IDrawer drawer;
 
@@ -30,11 +33,13 @@ namespace TanksGame.Core
         {
             this.enemies = EnemiesProvider.Instance;
             this.terrain = TerrainProvider.Instance;
+            this.boolTemplateProvider = BoolTemplateProvider.Instace;
             
             this.drawer = new ConsoleDrawer();
+            this.tankFactory = new TankFactory();
 
-            Texture playerBody = new Texture(TerrainGenerator.TankBody, '|', ConsoleColor.Green);
-            this.player = new Tank(10, 10, playerBody, null);
+            Texture playerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
+            this. player = tankFactory.CreateTank(10,10,playerBody,null);
         }
 
         public static IEngine Instance
@@ -48,6 +53,7 @@ namespace TanksGame.Core
         public void Run()
         {
             //Border border = new Border();
+            Water water = new Water(30, 30);
             while (true)
             {
                 if (Console.KeyAvailable)
@@ -74,6 +80,7 @@ namespace TanksGame.Core
                 }
                 
                 drawer.Draw(this.player);
+                drawer.Draw(water);
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();

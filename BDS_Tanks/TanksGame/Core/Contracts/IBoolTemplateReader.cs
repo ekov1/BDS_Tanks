@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TanksGame.Contracts;
-using TanksGame.Player;
 
 namespace TanksGame.Core.Contracts
 {
-    public interface IEnemiesProvider
+    public interface IBoolTemplateProvider
     {
-        ICollection<ITank> EnemyTanks { get; }
+        ICollection<IEnumerable<bool>> GetBoolTemplate(string filename);
     }
 }
