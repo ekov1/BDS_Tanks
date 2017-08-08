@@ -10,8 +10,8 @@ namespace TanksGame.Environment.Terrains
     public class Water : Terrain
     {
         public Water(int startX, int startY)
-            : base(startX, startY, 
-                  new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '░', ConsoleColor.Cyan), 
+            : base(startX, startY,
+                  new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '░', ConsoleColor.Cyan),
                   true, false)
         {
 

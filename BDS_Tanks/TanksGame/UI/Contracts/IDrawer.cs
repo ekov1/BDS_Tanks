@@ -10,5 +10,6 @@ namespace TanksGame.UI
     public interface IDrawer
     {
         void Draw(IDrawable obj);
+        void DrawMultiple(IEnumerable<IDrawable> items);
     }
 }

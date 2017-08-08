@@ -25,6 +25,6 @@ namespace TanksGame.Core.Providers
             }
         }
 
-        public ICollection<Terrain> Terrain { get; private set; }
+        public ICollection<Terrain> Terrain { get; set; }
     }
 }

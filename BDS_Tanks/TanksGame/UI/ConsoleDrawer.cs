@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TanksGame.Common;
 
 namespace TanksGame.UI
 {
@@ -11,9 +12,10 @@ namespace TanksGame.UI
         public ConsoleDrawer()
         {
             Console.CursorVisible = false;
-            Console.WriteLine("{0} {1}", Console.LargestWindowWidth, Console.LargestWindowHeight);
-            Console.SetWindowSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
-            Console.SetBufferSize(Console.LargestWindowWidth, Console.LargestWindowHeight);
+            //Console.WriteLine("{0} {1}", Console.LargestWindowWidth, Console.LargestWindowHeight);
+
+            Console.SetWindowSize(Constants.ConsoleWidth, Constants.ConsoleHeight);
+            Console.SetBufferSize(Constants.ConsoleWidth, Constants.ConsoleHeight);
         }
 
         public void Draw(IDrawable obj)
@@ -33,6 +35,14 @@ namespace TanksGame.UI
                 
                 cursorY++;
                 Console.WriteLine();
+            }
+        }
+
+        public void DrawMultiple(IEnumerable<IDrawable> items)
+        {
+            foreach (IDrawable item in items)
+            {
+                this.Draw(item);
             }
         }
     }

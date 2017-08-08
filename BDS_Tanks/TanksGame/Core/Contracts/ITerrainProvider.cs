@@ -9,6 +9,6 @@ namespace TanksGame.Core.Contracts
 {
     public interface ITerrainProvider
     {
-        ICollection<Terrain> Terrain { get; }
+        ICollection<Terrain> Terrain { get; set; }
     }
 }

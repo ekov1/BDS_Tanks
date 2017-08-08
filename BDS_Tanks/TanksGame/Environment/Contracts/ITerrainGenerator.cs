@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using TanksGame.Core.Enums;
 using TanksGame.Environment.Terrains;
 
-namespace TanksGame.Contracts
+namespace TanksGame.Environment.Contracts
 {
-    public interface ITerrainFactory
+    public interface ITerrainGenerator
     {
-        Terrain CreateTerrain(TerrainType type, int x, int y);
+        IEnumerable<Terrain> GenerateRandomMap(int terrainElementsCount);
     }
 }

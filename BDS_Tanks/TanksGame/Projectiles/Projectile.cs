@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TanksGame.Contracts;
-using TanksGame.Enums;
+using TanksGame.Core.Enums;
 using TanksGame.Environment;
 
 namespace TanksGame.Projectiles

@@ -11,6 +11,7 @@ using TanksGame.Core.Contracts;
 using TanksGame.Core.Factories;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
+using TanksGame.Environment.Contracts;
 using TanksGame.Environment.Terrains;
 using TanksGame.Player;
 using TanksGame.UI;
@@ -20,10 +21,11 @@ namespace TanksGame.Core
     public class Engine : IEngine
     {
         private static readonly IEngine instance = new Engine();
-        
+
         private readonly IEnemiesProvider enemies;
         private readonly ITerrainProvider terrain;
         private readonly IBoolTemplateProvider boolTemplateProvider;
+        private readonly ITerrainGenerator terrainGenerator;
 
         private readonly ITankFactory tankFactory;
         private readonly ITank player;
@@ -34,12 +36,15 @@ namespace TanksGame.Core
             this.enemies = EnemiesProvider.Instance;
             this.terrain = TerrainProvider.Instance;
             this.boolTemplateProvider = BoolTemplateProvider.Instace;
-            
+            this.terrainGenerator = TerrainGenerator.Instance;
+
             this.drawer = new ConsoleDrawer();
             this.tankFactory = new TankFactory();
 
+            this.terrain.Terrain = terrainGenerator.GenerateRandomMap(Constants.TerrainCountOnMap).ToList();
+
             Texture playerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
-            this. player = tankFactory.CreateTank(10,10,playerBody,null);
+            this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY, playerBody, null);
         }
 
         public static IEngine Instance
@@ -53,7 +58,6 @@ namespace TanksGame.Core
         public void Run()
         {
             //Border border = new Border();
-            Water water = new Water(30, 30);
             while (true)
             {
                 if (Console.KeyAvailable)
@@ -78,9 +82,9 @@ namespace TanksGame.Core
                             break;
                     }
                 }
-                
+
                 drawer.Draw(this.player);
-                drawer.Draw(water);
+                drawer.DrawMultiple(this.terrain.Terrain);
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();
