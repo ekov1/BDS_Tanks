@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TanksGame.Core.Enums;
 using TanksGame.Core.Providers;
 
 namespace TanksGame.Environment.Terrains
 {
-    class NormalBrick : Brick
+    public class NormalBrick : Brick
     {
         private int health;
+
         public NormalBrick(int startX, int startY)
             : base(startX, startY)
         {

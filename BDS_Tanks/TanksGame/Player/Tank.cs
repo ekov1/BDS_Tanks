@@ -1,13 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TanksGame.Common;
 using TanksGame.Contracts;
 using TanksGame.Environment;
 using TanksGame.Projectiles;
-using TanksGame.UI;
 
 namespace TanksGame.Player
 {
@@ -23,9 +17,7 @@ namespace TanksGame.Player
 
         // will determine the damage
         public IProjectile Weapon { get; set; }
-
-       
-
+        
         public Texture Texture { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
@@ -34,6 +26,5 @@ namespace TanksGame.Player
         {
             throw new NotImplementedException();
         }
-        
     }
 }

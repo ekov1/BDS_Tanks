@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TanksGame.Common;
 
 namespace TanksGame.UI
@@ -16,7 +13,6 @@ namespace TanksGame.UI
 
             Console.SetWindowSize(Constants.ConsoleWidth, Constants.ConsoleHeight);
             Console.SetBufferSize(Constants.ConsoleWidth, Constants.ConsoleHeight);
-            
         }
 
         public void Draw(IDrawable obj)
@@ -26,14 +22,14 @@ namespace TanksGame.UI
             int cursorX = obj.X;
             int cursorY = obj.Y;
 
-           foreach(var line in body)
+            foreach (var line in body)
             {
                 Console.SetCursorPosition(cursorX, cursorY);
                 foreach (bool bit in line)
                 {
                     Console.Write(bit ? obj.Texture.Symbol : ' ');
                 }
-                
+
                 cursorY++;
                 Console.WriteLine();
             }

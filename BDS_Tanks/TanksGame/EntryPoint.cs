@@ -1,13 +1,12 @@
-﻿using System;
-using TanksGame.Core;
+﻿using TanksGame.Core;
 
 namespace TanksGame
 {
-    class EntryPoint
+    public class EntryPoint
     {
-        static void Main()
+        public static void Main()
         {
-           Engine.Instance.Run();
+            Engine.Instance.Run();
         }
     }
 }

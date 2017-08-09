@@ -1,8 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TanksGame.Common;
 using TanksGame.Contracts;
 using TanksGame.Core.Enums;
@@ -44,12 +41,11 @@ namespace TanksGame.Environment
                 int randomX = randomGen.Next(0, Constants.ConsoleWidth - Constants.TerrainWidth);
                 int randomY = randomGen.Next(0, Constants.ConsoleHeight - Constants.TerrainHeight);
 
-                Terrain currTerrain = this.terrainFactory.CreateTerrain((TerrainType)randomTerrain,randomX, randomY);
+                Terrain currTerrain = this.terrainFactory.CreateTerrain((TerrainType)randomTerrain, randomX, randomY);
                 terrainList.Add(currTerrain);
             }
 
             return terrainList;
-
         }
     }
 }

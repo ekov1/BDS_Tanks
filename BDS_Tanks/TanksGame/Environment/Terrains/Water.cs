@@ -6,7 +6,9 @@ namespace TanksGame.Environment.Terrains
     public class Water : Terrain
     {
         public Water(int startX, int startY)
-            : base(startX, startY) { }
+            : base(startX, startY)
+        {
+        }
 
         public override Texture Texture
         {
@@ -15,6 +17,7 @@ namespace TanksGame.Environment.Terrains
                 return new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '░', ConsoleColor.Cyan);
             }
         }
+
         public override bool IsPassable
         {
             get
@@ -22,6 +25,7 @@ namespace TanksGame.Environment.Terrains
                 return true;
             }
         }
+
         public override bool IsDestructable
         {
             get

@@ -21,6 +21,5 @@
         public const char WaterTerrain = '~';
         public const char BrickTerrain = 'E';
         public const char StoneTerrain = 'X';
-
     }
 }

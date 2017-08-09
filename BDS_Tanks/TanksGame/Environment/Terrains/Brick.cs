@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TanksGame.Core.Providers;
-
-namespace TanksGame.Environment.Terrains
+﻿namespace TanksGame.Environment.Terrains
 {
     public abstract class Brick : Terrain
     {

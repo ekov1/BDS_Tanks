@@ -1,5 +1,4 @@
-﻿using System;
-namespace TanksGame.Core.Enums
+﻿namespace TanksGame.Core.Enums
 {
     public enum TerrainType
     {

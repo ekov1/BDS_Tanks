@@ -1,10 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
 using System.Linq;
-using System.Text;
 using System.Threading;
-using System.Threading.Tasks;
 using TanksGame.Common;
 using TanksGame.Contracts;
 using TanksGame.Core.Contracts;
@@ -12,8 +8,6 @@ using TanksGame.Core.Factories;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
 using TanksGame.Environment.Contracts;
-using TanksGame.Environment.Terrains;
-using TanksGame.Player;
 using TanksGame.UI;
 
 namespace TanksGame.Core
@@ -85,8 +79,8 @@ namespace TanksGame.Core
                     }
                 }
 
-                drawer.Draw(this.player);
-                drawer.Draw(this.terrain.Terrain);
+                this.drawer.Draw(this.player);
+                this.drawer.Draw(this.terrain.Terrain);
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();

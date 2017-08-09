@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TanksGame.Contracts;
 using TanksGame.Core.Contracts;
-using TanksGame.Player;
 
 namespace TanksGame.Core.Providers
 {
@@ -11,7 +9,7 @@ namespace TanksGame.Core.Providers
         // TODO: populate the enemies somehow 
 
         private static readonly EnemiesProvider instance = new EnemiesProvider();
-        private readonly ITankFactory tankFactory;
+        //private readonly ITankFactory tankFactory;  ?
 
         private EnemiesProvider()
         {

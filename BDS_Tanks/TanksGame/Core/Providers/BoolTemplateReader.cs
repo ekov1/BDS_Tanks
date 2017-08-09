@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using TanksGame.Core.Contracts;
 
 namespace TanksGame.Core.Providers
@@ -12,7 +9,7 @@ namespace TanksGame.Core.Providers
     {
         private static readonly BoolTemplateProvider instance = new BoolTemplateProvider();
 
-        private Dictionary<string, ICollection<IEnumerable<bool>>> cache;
+        private IDictionary<string, ICollection<IEnumerable<bool>>> cache;
 
         private BoolTemplateProvider()
         {
