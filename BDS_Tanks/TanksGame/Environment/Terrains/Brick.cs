@@ -17,13 +17,7 @@ namespace TanksGame.Environment.Terrains
         {
             
         }
-        public override Texture Texture
-        {
-            get
-            {
-                return new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '▓', ConsoleColor.Red); ;
-            }
-        }
+       
         public override bool IsPassable
         {
             get
