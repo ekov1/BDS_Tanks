@@ -1,7 +1,9 @@
-﻿namespace TanksGame.Contracts
+﻿using TanksGame.Core.Enums;
+
+namespace TanksGame.Contracts
 {
     public interface IMover
     {
-        void Move(IMovable obj, int offsetX, int offsetY);
+        void Move(IMovable obj, Direction direction);
     }
 }

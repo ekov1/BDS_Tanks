@@ -4,6 +4,7 @@ using System.Threading;
 using TanksGame.Common;
 using TanksGame.Contracts;
 using TanksGame.Core.Contracts;
+using TanksGame.Core.Enums;
 using TanksGame.Core.Factories;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
@@ -62,19 +63,19 @@ namespace TanksGame.Core
                     switch (keyInfo)
                     {
                         case ConsoleKey.W:
-                            this.mover.Move(this.player, 0, -Constants.PlayerHeight);
+                            this.mover.Move(this.player, Direction.Top);
                             break;
 
                         case ConsoleKey.A:
-                            this.mover.Move(this.player, -Constants.PlayerWidth, 0);
+                            this.mover.Move(this.player, Direction.Left);
                             break;
 
                         case ConsoleKey.S:
-                            this.mover.Move(this.player, 0, Constants.PlayerHeight);
+                            this.mover.Move(this.player, Direction.Down);
                             break;
 
                         case ConsoleKey.D:
-                            this.mover.Move(this.player, Constants.PlayerWidth, 0);
+                            this.mover.Move(this.player, Direction.Right);
                             break;
                     }
                 }

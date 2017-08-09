@@ -1,4 +1,5 @@
 ﻿using TanksGame.Contracts;
+using TanksGame.Core.Enums;
 
 namespace TanksGame.Common
 {
@@ -16,16 +17,34 @@ namespace TanksGame.Common
             }
         }
 
-        public void Move(IMovable obj, int offsetX, int offsetY)
+        public void Move(IMovable obj, Direction direction)
         {
-            if (obj.X + offsetX >= 0 && obj.X + offsetX < Constants.ConsoleWidth)
+            switch(direction)
             {
-                obj.X += offsetX;
-            }
-
-            if (obj.Y + offsetY >= 0 && obj.Y + offsetY < Constants.ConsoleHeight - Constants.PlayerHeight)
-            {
-                obj.Y += offsetY;
+                case Direction.Top:
+                    if (obj.Y - 1 >= 0)
+                    {
+                        obj.Y--;
+                    }
+                    break;
+                case Direction.Down:
+                    if (obj.Y + 1 < Constants.ConsoleHeight - Constants.PlayerHeight)
+                    {
+                        obj.Y++;
+                    }
+                    break;
+                case Direction.Left:
+                    if (obj.X - 1 >= 0)
+                    {
+                        obj.X--;
+                    }
+                    break;
+                case Direction.Right:
+                    if (obj.X + 1 < Constants.ConsoleWidth)
+                    {
+                        obj.X++;
+                    }
+                    break;
             }
         }
     }
