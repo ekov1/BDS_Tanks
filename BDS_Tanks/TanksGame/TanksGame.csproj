@@ -42,6 +42,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\Mover.cs" />
+    <Compile Include="Contracts\IMover.cs" />
     <Compile Include="Core\Enums\HealthList.cs" />
     <Compile Include="Core\Enums\TerrainType.cs" />
     <Compile Include="Core\Providers\BoolTemplateReader.cs" />

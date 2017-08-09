@@ -39,7 +39,7 @@ namespace TanksGame.UI
             }
         }
 
-        public void DrawMultiple(IEnumerable<IDrawable> items)
+        public void Draw(IEnumerable<IDrawable> items)
         {
             foreach (IDrawable item in items)
             {

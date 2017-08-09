@@ -26,6 +26,7 @@ namespace TanksGame.Core
         private readonly ITerrainProvider terrain;
         private readonly IBoolTemplateProvider boolTemplateProvider;
         private readonly ITerrainGenerator terrainGenerator;
+        private readonly IMover mover;
 
         private readonly ITankFactory tankFactory;
         private readonly ITank player;
@@ -37,6 +38,7 @@ namespace TanksGame.Core
             this.terrain = TerrainProvider.Instance;
             this.boolTemplateProvider = BoolTemplateProvider.Instace;
             this.terrainGenerator = TerrainGenerator.Instance;
+            this.mover = Mover.Instance;
 
             this.drawer = new ConsoleDrawer();
             this.tankFactory = new TankFactory();
@@ -66,25 +68,25 @@ namespace TanksGame.Core
                     switch (keyInfo)
                     {
                         case ConsoleKey.W:
-                            this.player.Move(0, -Constants.PlayerHeight);
+                            this.mover.Move(this.player, 0, -Constants.PlayerHeight);
                             break;
 
                         case ConsoleKey.A:
-                            this.player.Move(-Constants.PlayerWidth, 0);
+                            this.mover.Move(this.player, -Constants.PlayerWidth, 0);
                             break;
 
                         case ConsoleKey.S:
-                            this.player.Move(0, Constants.PlayerHeight);
+                            this.mover.Move(this.player, 0, Constants.PlayerHeight);
                             break;
 
                         case ConsoleKey.D:
-                            this.player.Move(Constants.PlayerHeight, 0);
+                            this.mover.Move(this.player, Constants.PlayerWidth, 0);
                             break;
                     }
                 }
 
                 drawer.Draw(this.player);
-                drawer.DrawMultiple(this.terrain.Terrain);
+                drawer.Draw(this.terrain.Terrain);
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();

@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace TanksGame.Contracts
 {
-    public interface IMovable
+    public interface IMover
     {
-        int X { get; set; }
-        
-        int Y { get; set; }
+        void Move(IMovable obj, int offsetX, int offsetY);
     }
 }

@@ -11,7 +11,7 @@ using TanksGame.UI;
 
 namespace TanksGame.Player
 {
-    public class Tank : ITank
+    public class Tank : ITank, IMovable
     {
         public Tank(int x, int y, Texture texture, IProjectile weapon)
         {
@@ -24,30 +24,16 @@ namespace TanksGame.Player
         // will determine the damage
         public IProjectile Weapon { get; set; }
 
-        public int X { get; set; }
-
-        public int Y { get; set; }
+       
 
         public Texture Texture { get; set; }
+        public int X { get; set; }
+        public int Y { get; set; }
 
         public void Attack()
         {
             throw new NotImplementedException();
         }
-
-        public void Move(int offsetX, int offsetY)
-        {
-
-
-            if (this.X + offsetX > 0 && this.X + offsetX <= Constants.ConsoleWidth - Constants.PlayerWidth)
-            {
-                this.X += offsetX;
-            }
-
-            if (this.Y + offsetY > 0 && this.Y + offsetY <= Constants.ConsoleHeight - Constants.PlayerHeight)
-            {
-                this.Y += offsetY;
-            }
-        }
+        
     }
 }
