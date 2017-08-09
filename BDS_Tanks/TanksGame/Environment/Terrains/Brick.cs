@@ -15,6 +15,7 @@ namespace TanksGame.Environment.Terrains
         public Brick(int startX, int startY)
             : base(startX, startY)
         {
+            
         }
         public override Texture Texture
         {
