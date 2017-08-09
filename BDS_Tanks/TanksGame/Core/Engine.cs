@@ -9,6 +9,7 @@ using TanksGame.Core.Factories;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
 using TanksGame.Environment.Contracts;
+using TanksGame.Projectiles;
 using TanksGame.UI;
 
 namespace TanksGame.Core
@@ -41,7 +42,9 @@ namespace TanksGame.Core
             this.terrain.Terrain = terrainGenerator.GenerateRandomMap(Constants.TerrainCountOnMap).ToList();
 
             Texture playerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
-            this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY, playerBody, null);
+
+            this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY, 
+                playerBody, new MachineGun(Constants.PlayerStartX,Constants.PlayerStartY,Constants.MachineGunDamage));
         }
 
         public static IEngine Instance
@@ -54,7 +57,6 @@ namespace TanksGame.Core
 
         public void Run()
         {
-            //Border border = new Border();
             while (true)
             {
                 if (Console.KeyAvailable)
@@ -82,6 +84,8 @@ namespace TanksGame.Core
 
                 this.drawer.Draw(this.player);
                 this.drawer.Draw(this.terrain.Terrain);
+                this.drawer.Draw(this.player.Weapon);
+                
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();

@@ -1,9 +1,11 @@
 ﻿using TanksGame.UI;
+using TanksGame.UI.Contracts;
 
 namespace TanksGame.Contracts
 {
-    public interface ITank : IMovable, IDrawable
+    public interface ITank : IMovable, IDrawable        
     {
-         void Attack();
+        IProjectile  Weapon { get; set; }
+        void Attack();
     }
 }

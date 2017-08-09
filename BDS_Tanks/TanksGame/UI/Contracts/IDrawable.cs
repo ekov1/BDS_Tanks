@@ -1,11 +1,10 @@
 ﻿using TanksGame.Environment;
+using TanksGame.UI.Contracts;
 
-namespace TanksGame.UI
+namespace TanksGame.UI.Contracts
 {
-    public interface IDrawable
+    public interface IDrawable : IPosition
     {
         Texture Texture { get; }
-        int X { get; set; }
-        int Y { get; set; }
     }
 }

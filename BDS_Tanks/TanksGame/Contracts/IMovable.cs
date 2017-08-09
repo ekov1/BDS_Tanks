@@ -1,9 +1,8 @@
-﻿namespace TanksGame.Contracts
+﻿using TanksGame.UI.Contracts;
+
+namespace TanksGame.Contracts
 {
-    public interface IMovable
+    public interface IMovable : IPosition
     {
-        int X { get; set; }
-        
-        int Y { get; set; }
     }
 }

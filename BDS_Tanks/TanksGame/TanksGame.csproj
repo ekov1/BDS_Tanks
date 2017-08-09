@@ -57,7 +57,6 @@
     <Compile Include="Core\Contracts\ITerrainProvider.cs" />
     <Compile Include="Core\Factories\TankFactory.cs" />
     <Compile Include="Core\Providers\TerrainProvider.cs" />
-    <Compile Include="Environment\Border.cs" />
     <Compile Include="Environment\Contracts\ITerrainGenerator.cs" />
     <Compile Include="Environment\TerrainGenerator.cs" />
     <Compile Include="Environment\Terrains\Brick.cs" />
@@ -85,6 +84,7 @@
     <Compile Include="Projectiles\Rocket.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Player\Tank.cs" />
+    <Compile Include="UI\Contracts\IPosition.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
@@ -94,6 +94,8 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UI\Visuals\machineGun.txt" />
+    <Content Include="UI\Visuals\rocket.txt" />
     <Content Include="UI\Visuals\tank.txt" />
     <Content Include="UI\Visuals\terrain.txt" />
   </ItemGroup>

@@ -1,6 +1,8 @@
-﻿namespace TanksGame.Contracts
+﻿using TanksGame.UI.Contracts;
+
+namespace TanksGame.Contracts
 {
-    public interface IProjectile
+    public interface IProjectile : IMovable, IDrawable, IPosition  
     {
     }
 }

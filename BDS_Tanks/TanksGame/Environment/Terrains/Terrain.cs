@@ -1,5 +1,6 @@
 ﻿using TanksGame.Core.Contracts;
 using TanksGame.UI;
+using TanksGame.UI.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {

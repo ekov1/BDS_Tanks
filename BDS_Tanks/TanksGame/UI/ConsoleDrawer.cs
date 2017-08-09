@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using TanksGame.Common;
+using TanksGame.UI.Contracts;
 
 namespace TanksGame.UI
 {

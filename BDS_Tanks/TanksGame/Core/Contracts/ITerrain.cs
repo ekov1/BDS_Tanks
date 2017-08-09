@@ -1,4 +1,5 @@
 ﻿using TanksGame.UI;
+using TanksGame.UI.Contracts;
 
 namespace TanksGame.Core.Contracts
 {
