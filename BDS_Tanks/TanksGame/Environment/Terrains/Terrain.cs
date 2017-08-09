@@ -21,10 +21,10 @@ namespace TanksGame.Environment.Terrains
 
         public int Y { get; set; }
 
-        public abstract Texture Texture { get;  }
+        public abstract Texture Texture { get; }
 
         public abstract bool IsPassable { get; }
-               
+
         public abstract bool IsDestructable { get; }
     }
 }

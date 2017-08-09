@@ -16,6 +16,7 @@ namespace TanksGame.UI
 
             Console.SetWindowSize(Constants.ConsoleWidth, Constants.ConsoleHeight);
             Console.SetBufferSize(Constants.ConsoleWidth, Constants.ConsoleHeight);
+            
         }
 
         public void Draw(IDrawable obj)

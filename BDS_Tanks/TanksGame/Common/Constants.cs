@@ -2,15 +2,15 @@
 {
     public static class Constants
     {
-        public const int PlayerStartX = ConsoleWidth/2 - PlayerWith;
+        public const int PlayerStartX = ConsoleWidth/2 - PlayerWidth;
         public const int PlayerStartY = 40;
 
 
-        public const int ConsoleWidth = 100;
+        public const int ConsoleWidth = 50;
         public const int ConsoleHeight = 50;
 
-        public const int PlayerWidth = 4;
-        public const int PlayerWith = 5;
+        public const int PlayerHeight = 3;
+        public const int PlayerWidth = 5;
 
         public const int TerrainWidth = 5;
         public const int TerrainHeight = 3;

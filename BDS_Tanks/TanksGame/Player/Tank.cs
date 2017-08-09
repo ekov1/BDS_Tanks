@@ -11,9 +11,9 @@ using TanksGame.UI;
 
 namespace TanksGame.Player
 {
-    public class Tank : ITank  
+    public class Tank : ITank
     {
-        public Tank(int x, int y, Texture texture,IProjectile weapon)
+        public Tank(int x, int y, Texture texture, IProjectile weapon)
         {
             this.X = x;
             this.Y = y;
@@ -30,14 +30,24 @@ namespace TanksGame.Player
 
         public Texture Texture { get; set; }
 
+        public void Attack()
+        {
+            throw new NotImplementedException();
+        }
+
         public void Move(int offsetX, int offsetY)
         {
-            // limits
-            // width (X) = Console.LargestWindowWidth 
-            // height (Y) = Console.LargestWindowHeight
 
-            this.X += offsetX;
-            this.Y += offsetY;
+
+            if (this.X + offsetX > 0 && this.X + offsetX <= Constants.ConsoleWidth - Constants.PlayerWidth)
+            {
+                this.X += offsetX;
+            }
+
+            if (this.Y + offsetY > 0 && this.Y + offsetY <= Constants.ConsoleHeight - Constants.PlayerHeight)
+            {
+                this.Y += offsetY;
+            }
         }
     }
 }

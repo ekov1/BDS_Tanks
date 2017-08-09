@@ -7,7 +7,7 @@ namespace TanksGame
     {
         static void Main()
         {
-            Engine.Instance.Run();
+           Engine.Instance.Run();
         }
     }
 }
