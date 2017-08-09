@@ -10,6 +10,7 @@ namespace TanksGame.Environment.Terrains
     public abstract class Brick : Terrain
     {
         private int health;
+        private bool isDestroyed;
 
         public Brick(int startX, int startY)
             : base(startX, startY)

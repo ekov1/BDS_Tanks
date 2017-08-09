@@ -15,8 +15,12 @@ namespace TanksGame.Core.Factories
         {
             switch (type)
             {
-                case TerrainType.Brick:
-                    return new Brick(x, y);
+                case TerrainType.NormalBrick:
+                    return new NormalBrick(x, y);
+                case TerrainType.SteelBrick:
+                    return new SteelBrick(x, y);
+                case TerrainType.SelfHealingbrick:
+                    return new SelfHealingbrick(x, y);
                 case TerrainType.Stone:
                     return new Stone(x, y);
                 case TerrainType.Water:

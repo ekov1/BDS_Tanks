@@ -5,6 +5,8 @@ namespace TanksGame.Core.Enums
     {
         Water = 0,
         Stone = 1,
-        Brick = 2
+        NormalBrick = 2,
+        SteelBrick = 3,
+        SelfHealingbrick = 4
     }
 }
