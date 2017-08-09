@@ -7,8 +7,10 @@ using TanksGame.Core.Providers;
 
 namespace TanksGame.Environment.Terrains
 {
-    public class Brick : Terrain
+    public abstract class Brick : Terrain
     {
+        private int health;
+
         public Brick(int startX, int startY)
             : base(startX, startY)
         {
@@ -33,6 +35,11 @@ namespace TanksGame.Environment.Terrains
             {
                 return true;
             }
+        }
+
+        public void DecreaseHealth()
+        {
+
         }
     }
 }
