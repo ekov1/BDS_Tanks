@@ -25,6 +25,7 @@ namespace TanksGame.Core
         private readonly IMover mover;
 
         private readonly ITankFactory tankFactory;
+        private readonly IProjectileFactory projectileFactory;
         private readonly ITank player;
         private readonly IDrawer drawer;
 
@@ -34,17 +35,18 @@ namespace TanksGame.Core
             this.terrain = TerrainProvider.Instance;
             this.boolTemplateProvider = BoolTemplateProvider.Instace;
             this.terrainGenerator = TerrainGenerator.Instance;
-            
+
             this.drawer = new ConsoleDrawer();
             this.tankFactory = new TankFactory();
+            this.projectileFactory = new ProjectileFactory();
 
             this.terrain.Terrain = terrainGenerator.GenerateRandomMap(Constants.TerrainCountOnMap).ToList();
             this.mover = Mover.Instance;
 
             FigureTexture playerBody = new FigureTexture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
 
-            this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY, 
-                playerBody, new MachineGun(Constants.PlayerStartX,Constants.PlayerStartY,Constants.MachineGunDamage));
+            this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY,
+                playerBody);
         }
 
         public static IEngine Instance
@@ -79,12 +81,23 @@ namespace TanksGame.Core
                         case ConsoleKey.D:
                             this.mover.Move(this.player, Direction.Right);
                             break;
+                        case ConsoleKey.Spacebar:
+                            IProjectile projectile = this.projectileFactory.CreateProjectile(this.player.WeaponType, this.player.X + Constants.PlayerWidth / 2, this.player.Y, Direction.Top);
+                            this.player.FiredProjectiles.Add(projectile);
+                            break;
                     }
                 }
+                this.player.FiredProjectiles.ToList().ForEach(p =>
+                {
+                    if (this.mover.Move(p, p.Direction))
+                    {
+                        this.player.FiredProjectiles.Remove(p);
+                    }
+                });
 
                 this.drawer.Draw(this.player);
                 this.drawer.Draw(this.terrain.Terrain);
-                this.drawer.Draw(this.player.Weapon);
+                this.drawer.Draw(this.player.FiredProjectiles);
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();

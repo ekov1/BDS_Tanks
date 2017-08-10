@@ -2,6 +2,7 @@
 using TanksGame.Contracts;
 using TanksGame.Core.Enums;
 using TanksGame.Environment;
+using TanksGame.Environment.Contracts;
 using TanksGame.UI;
 using TanksGame.UI.Contracts;
 
@@ -11,30 +12,19 @@ namespace TanksGame.Projectiles
     {
         private int damage;
 
-        public Projectile(int x, int y, int damage)
+        public Projectile(int x, int y)
         {
-            this.Damage = damage;
+            this.X = x;
+            this.Y = y;
             this.Direction = Direction.Top;
 
         }
+        
+        public abstract IFigureTexture FigureTexture { get;  }
 
-        public abstract FigureTexture FigureTexture { get;  }
+        public abstract int Damage { get; }
         public Direction Direction { get; set; }
-        public int Damage
-        {
-            get
-            {
-                return this.damage;
-            }
-            set
-            {
-                if (value <= 0)
-                {
-                    throw new ArgumentException("Damage cannot be less than 1");
-                }
-                this.damage = value;
-            }
-        }
+
 
         public int X { get; set; }
         public int Y { get; set; }

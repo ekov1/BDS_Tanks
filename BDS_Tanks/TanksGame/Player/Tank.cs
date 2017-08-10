@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using TanksGame.Common;
 using TanksGame.Contracts;
+using TanksGame.Core.Enums;
 using TanksGame.Environment;
+using TanksGame.Environment.Contracts;
 using TanksGame.Projectiles;
 using TanksGame.UI.Contracts;
 
@@ -10,23 +12,24 @@ namespace TanksGame.Player
 {
     public class Tank : ITank, IMovable, IDrawable
     {
-        private readonly string name;
-        private ICollection<IProjectile> projectiles;
-
-        public Tank(int x, int y, FigureTexture texture, IProjectile weapon)
+        private string name;
+        public Tank(int x, int y, IFigureTexture texture)
         {
             this.X = x;
             this.Y = y;
             this.FigureTexture = texture;
-            this.Weapon = weapon;
+            this.WeaponType = ProjectileType.MachineGun;
+            this.FiredProjectiles = new List<IProjectile>();
         }
+        
 
-        // will determine the damage
-        public FigureTexture FigureTexture { get; set; }
+        public IFigureTexture FigureTexture { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
-        public IProjectile Weapon { get; set; }
-        
+        public ProjectileType WeaponType { get; set; }
+
+        public ICollection<IProjectile> FiredProjectiles { get; protected set; }
+
         public string Name
         {
             get
@@ -43,24 +46,18 @@ namespace TanksGame.Player
             }
         }
 
+
         public void Attack()
         {
-           
+
         }
 
         public void Report()
         {
-           
+
         }
 
-        public void AddProjectile(IProjectile projectile)
-        {
-            if (projectile == null)
-            {
-                throw new NullReferenceException("Null projectile can not be added");
-            }
 
-            this.projectiles.Add(projectile);
-        }
+
     }
 }

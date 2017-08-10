@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TanksGame.Common;
 using TanksGame.Core.Contracts;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
+using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Projectiles
 {
@@ -13,17 +15,26 @@ namespace TanksGame.Projectiles
     {
         IBoolTemplateProvider templateProvider;
 
-        public BulletWithButterflyWings(int x, int y, int damage) : base(x, y, damage)
+        public BulletWithButterflyWings(int x, int y) 
+            : base(x, y)
         {
             this.templateProvider = BoolTemplateProvider.Instace;
 
         }
 
-        public override FigureTexture FigureTexture
+        public override IFigureTexture FigureTexture
         {
             get
             {
                 return new FigureTexture(this.templateProvider.GetBoolTemplate("BulletWithButterflyWings"), 'x', ConsoleColor.Red);
+            }
+        }
+
+        public override int Damage
+        {
+            get
+            {
+                return Constants.BulletWithButterflyWingsDamage;
             }
         }
     }

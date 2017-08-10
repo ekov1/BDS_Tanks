@@ -1,5 +1,6 @@
 ﻿using System;
 using TanksGame.Core.Providers;
+using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {
@@ -11,7 +12,7 @@ namespace TanksGame.Environment.Terrains
 
         }
 
-        public override FigureTexture FigureTexture
+        public override IFigureTexture FigureTexture
         {
             get
             {

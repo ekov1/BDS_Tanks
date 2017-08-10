@@ -1,6 +1,7 @@
 ﻿using System;
 using TanksGame.Core.Enums;
 using TanksGame.Core.Providers;
+using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {
@@ -14,7 +15,7 @@ namespace TanksGame.Environment.Terrains
             this.health = (int)HealthList.NormalBrickHealth;
         }
 
-        public override FigureTexture FigureTexture
+        public override IFigureTexture FigureTexture
         {
             get
             {

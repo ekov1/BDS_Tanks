@@ -1,6 +1,7 @@
 ﻿using System;
 using TanksGame.Core.Enums;
 using TanksGame.Core.Providers;
+using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {
@@ -22,7 +23,7 @@ namespace TanksGame.Environment.Terrains
             // health +++
         }
 
-        public override FigureTexture FigureTexture 
+        public override IFigureTexture FigureTexture 
         {
             get
             {
