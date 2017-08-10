@@ -19,7 +19,8 @@
 
         public const int MachineGunDamage = 1;
         public const int RocketDamage = 10;
-        
+        public const int BulletWithButterflyWingsDamage = 3;
+
         public const char WaterTerrain = '~';
         public const char BrickTerrain = 'E';
         public const char StoneTerrain = 'X';

@@ -11,6 +11,7 @@ namespace TanksGame.Player
 {
     public class Tank : ITank, IMovable, IDrawable
     {
+        private string name;
         public Tank(int x, int y, Texture texture)
         {
             this.X = x;
@@ -27,9 +28,33 @@ namespace TanksGame.Player
 
         public ICollection<IProjectile> FiredProjectiles { get; protected set; }
 
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+        }
+
+        public bool DefenseMode
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public void Attack()
         {
-            throw new NotImplementedException();
+           
         }
+
+        public void Report()
+        {
+           
+        }
+        
+
+      
     }
 }
