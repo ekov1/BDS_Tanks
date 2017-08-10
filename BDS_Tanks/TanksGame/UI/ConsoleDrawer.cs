@@ -18,8 +18,8 @@ namespace TanksGame.UI
 
         public void Draw(IDrawable obj)
         {
-            var body = obj.Texture.Body;
-            Console.ForegroundColor = obj.Texture.Color;
+            var body = obj.FigureTexture.Body;
+            Console.ForegroundColor = obj.FigureTexture.Color;
             int cursorX = obj.X;
             int cursorY = obj.Y;
 
@@ -29,7 +29,7 @@ namespace TanksGame.UI
 
                 foreach (bool bit in line)
                 {
-                    Console.Write(bit ? obj.Texture.Symbol : ' ');
+                    Console.Write(bit ? obj.FigureTexture.Symbol : ' ');
                 }
 
                 cursorY++;

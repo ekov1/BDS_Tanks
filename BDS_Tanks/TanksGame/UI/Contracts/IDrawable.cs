@@ -5,6 +5,6 @@ namespace TanksGame.UI.Contracts
 {
     public interface IDrawable : IPosition
     {
-        Texture Texture { get; }
+        FigureTexture FigureTexture { get; }
     }
 }

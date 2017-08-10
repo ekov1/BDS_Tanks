@@ -4,7 +4,7 @@ namespace TanksGame.Environment.Contracts
 {
     public interface IField
     {
-        IEnumerable<string> OccupiedFields { get; }
+        IEnumerable<bool> OccupiedFields { get; }
 
         void OccupyField(int offsetX, int offsetY);
 

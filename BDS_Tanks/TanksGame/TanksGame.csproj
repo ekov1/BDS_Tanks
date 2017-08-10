@@ -59,9 +59,13 @@
     <Compile Include="Core\Providers\TerrainProvider.cs" />
     <Compile Include="Contracts\Effects\Rage.cs" />
     <Compile Include="Contracts\Effects\SmashingPumpkins.cs" />
+    <Compile Include="Environment\Contracts\IFigureTexture.cs" />
     <Compile Include="Environment\Contracts\ITerrainGenerator.cs" />
     <Compile Include="Environment\Contracts\IField.cs" />
+    <Compile Include="Environment\Contracts\ITexture.cs" />
     <Compile Include="Environment\Field.cs" />
+    <Compile Include="Environment\FieldTexture.cs" />
+    <Compile Include="Environment\FigureTexture.cs" />
     <Compile Include="Environment\TerrainGenerator.cs" />
     <Compile Include="Environment\Terrains\Brick.cs" />
     <Compile Include="Environment\Terrains\NormalBrick.cs" />
@@ -98,6 +102,7 @@
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="UI\Visuals\field.txt" />
     <Content Include="UI\Visuals\machineGun.txt" />
     <Content Include="UI\Visuals\rocket.txt" />
     <Content Include="UI\Visuals\tank.txt" />

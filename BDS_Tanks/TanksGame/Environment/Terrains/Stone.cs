@@ -11,11 +11,11 @@ namespace TanksGame.Environment.Terrains
 
         }
 
-        public override Texture Texture
+        public override FigureTexture FigureTexture
         {
             get
             {
-                return new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '▒', ConsoleColor.DarkYellow);
+                return new FigureTexture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '▒', ConsoleColor.DarkYellow);
             }
         }
 

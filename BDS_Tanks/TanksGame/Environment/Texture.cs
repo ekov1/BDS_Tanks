@@ -1,19 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Environment
 {
-    public class Texture
+    public abstract class Texture : ITexture
     {
-        public Texture(ICollection<IEnumerable<bool>> body, char symbol, ConsoleColor color)
+        public Texture(ICollection<IEnumerable<bool>> body)
         {
             this.Body = body;
-            this.Symbol = symbol;
-            this.Color = color;
         }
 
-        public ICollection<IEnumerable<bool>> Body { get; set; }
-        public char Symbol { get; set; }
-        public ConsoleColor Color { get; set; }
+        public ICollection<IEnumerable<bool>> Body { get; }
     }
 }

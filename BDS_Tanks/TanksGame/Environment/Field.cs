@@ -8,11 +8,11 @@ namespace TanksGame.Environment
     public class Field : IField
     {
         private static readonly IField instance = new Field();
-        private ICollection<string> occupiedFields;
+        private ICollection<bool> occupiedFields;
 
         private Field()
         {
-            occupiedFields = new List<string>();
+            occupiedFields = new List<bool>();
         }
 
         public static IField Instance
@@ -23,28 +23,28 @@ namespace TanksGame.Environment
             }
         }
 
-        public IEnumerable<string> OccupiedFields
+        public IEnumerable<bool> OccupiedFields
         {
             get
             {
-                return new List<string>(this.occupiedFields);
+                return new List<bool>(this.occupiedFields);
             }
         }
 
         public void OccupyField(int offsetX, int offsetY)
         {
             var occupiedField = Convert.ToString(offsetY) + Convert.ToString(offsetX);
-            this.occupiedFields.Add(occupiedField);
+           // this.occupiedFields.Add(occupiedField);
         }
-
+        
         public void UnOccupyField(int offsetX, int offsetY)
         {
             var occupiedField = Convert.ToString(offsetY) + Convert.ToString(offsetX);
-
-            if (this.occupiedFields.Contains(occupiedField))
-            {
-                this.occupiedFields.Remove(occupiedField);
-            }
+        
+           //if (this.occupiedFields.Contains(occupiedField))
+           //{
+           //    this.occupiedFields.Remove(occupiedField);
+           //}
         }
     }
 }

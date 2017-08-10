@@ -9,6 +9,7 @@ namespace TanksGame.Contracts
         {
             get;
         }
+
         bool DefenseMode { get; }
 
         IProjectile Weapon { get; set; }

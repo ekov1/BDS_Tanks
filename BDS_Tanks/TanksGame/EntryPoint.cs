@@ -7,7 +7,7 @@ namespace TanksGame
     {
         public static void Main()
         {
-            //Engine.Instance.Run();
+            Engine.Instance.Run();
 
             //using (SpeechSynthesizer synthesizer = new SpeechSynthesizer())
             //{

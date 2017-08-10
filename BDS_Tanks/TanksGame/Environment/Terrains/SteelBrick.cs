@@ -14,11 +14,11 @@ namespace TanksGame.Environment.Terrains
             this.health = (int)HealthList.SteelBrickHealth;
         }
 
-        public override Texture Texture
+        public override FigureTexture FigureTexture
         {
             get
             {
-                return new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '±', ConsoleColor.Red); ;
+                return new FigureTexture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '±', ConsoleColor.Red); ;
             }
         }
     }

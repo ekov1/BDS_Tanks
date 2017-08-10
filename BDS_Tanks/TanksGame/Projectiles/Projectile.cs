@@ -18,7 +18,7 @@ namespace TanksGame.Projectiles
 
         }
 
-        public abstract Texture Texture { get;  }
+        public abstract FigureTexture FigureTexture { get;  }
         public Direction Direction { get; set; }
         public int Damage
         {

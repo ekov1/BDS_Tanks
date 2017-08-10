@@ -41,7 +41,7 @@ namespace TanksGame.Core
             this.terrain.Terrain = terrainGenerator.GenerateRandomMap(Constants.TerrainCountOnMap).ToList();
             this.mover = Mover.Instance;
 
-            Texture playerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
+            FigureTexture playerBody = new FigureTexture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
 
             this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY, 
                 playerBody, new MachineGun(Constants.PlayerStartX,Constants.PlayerStartY,Constants.MachineGunDamage));

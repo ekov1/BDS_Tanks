@@ -16,11 +16,11 @@ namespace TanksGame.Projectiles
 
         }
 
-        public override Texture Texture
+        public override FigureTexture FigureTexture
         {
             get
             {
-                return new Texture(this.templateProvider.GetBoolTemplate("machineGun"), '¤', ConsoleColor.Yellow);
+                return new FigureTexture(this.templateProvider.GetBoolTemplate("machineGun"), '¤', ConsoleColor.Yellow);
             }
         }
     }
