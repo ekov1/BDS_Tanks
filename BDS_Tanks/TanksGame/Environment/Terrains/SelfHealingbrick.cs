@@ -1,6 +1,7 @@
 ﻿using System;
 using TanksGame.Core.Enums;
 using TanksGame.Core.Providers;
+using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {
@@ -22,11 +23,11 @@ namespace TanksGame.Environment.Terrains
             // health +++
         }
 
-        public override Texture Texture
+        public override IFigureTexture FigureTexture 
         {
             get
             {
-                return new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '§', ConsoleColor.Red); ;
+                return new FigureTexture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '§', ConsoleColor.Red); ;
             }
         }
     }

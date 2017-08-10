@@ -25,6 +25,7 @@ namespace TanksGame.Core
         private readonly IMover mover;
 
         private readonly ITankFactory tankFactory;
+        private readonly IProjectileFactory projectileFactory;
         private readonly ITank player;
         private readonly ITank secondPlayer;
         private readonly IDrawer drawer;
@@ -35,22 +36,26 @@ namespace TanksGame.Core
             this.terrain = TerrainProvider.Instance;
             this.boolTemplateProvider = BoolTemplateProvider.Instace;
             this.terrainGenerator = TerrainGenerator.Instance;
-            
+
             this.drawer = new ConsoleDrawer();
             this.tankFactory = new TankFactory();
+            this.projectileFactory = new ProjectileFactory();
 
             this.terrain.Terrain = terrainGenerator.GenerateRandomMap(Constants.TerrainCountOnMap).ToList();
             this.mover = Mover.Instance;
 
-            Texture playerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
-            Texture secondPlayerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("secondTank"), '█', ConsoleColor.Magenta);
+
+            FigureTexture playerBody = new FigureTexture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
+            FigureTexture secondPlayerBody = new FigureTexture(this.boolTemplateProvider.GetBoolTemplate("secondTank"), '█', ConsoleColor.Magenta);
 
             // First Player !
-            this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY, 
-                playerBody, new MachineGun(Constants.PlayerStartX,Constants.PlayerStartY,Constants.MachineGunDamage));
+            this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY,
+                playerBody);
             // Second Player !
-            this.secondPlayer = tankFactory.CreateTank(Constants.secondPlayerStartX, Constants.secondPlayerStartY,
-                secondPlayerBody, new MachineGun(Constants.secondPlayerStartX, Constants.secondPlayerStartY, Constants.MachineGunDamage));
+            this.secondPlayer = tankFactory.CreateTank(Constants.SecondPlayerStartX, Constants.SecondPlayerStartY,
+                secondPlayerBody);
+
+
         }
 
         public static IEngine Instance
@@ -68,13 +73,19 @@ namespace TanksGame.Core
                 if (Console.KeyAvailable)
                 {
                     ConsoleKey keyInfo = Console.ReadKey(true).Key;
+
                     Controls(keyInfo);
                 }
+
+                MoveProjectile(player);
+                MoveProjectile(secondPlayer);
+
 
                 this.drawer.Draw(this.player);
                 this.drawer.Draw(this.secondPlayer);
                 this.drawer.Draw(this.terrain.Terrain);
-                this.drawer.Draw(this.player.Weapon);
+                this.drawer.Draw(this.player.FiredProjectiles);
+               this.drawer.Draw(this.secondPlayer.FiredProjectiles);
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();
@@ -100,7 +111,10 @@ namespace TanksGame.Core
                 case ConsoleKey.D:
                     this.mover.Move(this.player, Direction.Right);
                     break;
-
+                case ConsoleKey.Spacebar:
+                    IProjectile firstPlayerProjectile = this.projectileFactory.CreateProjectile(this.player.WeaponType, this.player.X + Constants.PlayerWidth / 2, this.player.Y, Direction.Top);
+                    this.player.FiredProjectiles.Add(firstPlayerProjectile);
+                    break;
                 //Second player controls !
                 case ConsoleKey.UpArrow:
                     this.mover.Move(this.secondPlayer, Direction.Top);
@@ -117,7 +131,21 @@ namespace TanksGame.Core
                 case ConsoleKey.RightArrow:
                     this.mover.Move(this.secondPlayer, Direction.Right);
                     break;
+                case ConsoleKey.Enter:
+                    IProjectile secondPlayerProjectile = this.projectileFactory.CreateProjectile(this.secondPlayer.WeaponType, this.secondPlayer.X + Constants.PlayerWidth / 2, this.secondPlayer.Y, Direction.Down);
+                    this.secondPlayer.FiredProjectiles.Add(secondPlayerProjectile);
+                    break;
             }
+        }
+        public void MoveProjectile(ITank tank)
+        {
+             tank.FiredProjectiles.ToList().ForEach(p =>
+            {
+                if (this.mover.Move(p, p.Direction))
+                {
+                    tank.FiredProjectiles.Remove(p);
+                }
+            });
         }
     }
 }

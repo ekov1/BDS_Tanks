@@ -1,5 +1,6 @@
 ﻿using System;
 using TanksGame.Core.Providers;
+using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {
@@ -10,11 +11,11 @@ namespace TanksGame.Environment.Terrains
         {
         }
 
-        public override Texture Texture
+        public override IFigureTexture FigureTexture
         {
             get
             {
-                return new Texture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '░', ConsoleColor.Cyan);
+                return new FigureTexture(BoolTemplateProvider.Instace.GetBoolTemplate("terrain"), '░', ConsoleColor.Cyan);
             }
         }
 

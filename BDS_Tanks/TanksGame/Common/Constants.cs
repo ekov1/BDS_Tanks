@@ -2,14 +2,16 @@
 {
     public static class Constants
     {
+        public const int TankSpeed = 2;
+
         public const int PlayerStartX = ConsoleWidth/2 - PlayerWidth;
-        public const int PlayerStartY = 40;
-
-        public const int secondPlayerStartX = (ConsoleWidth - 25) - PlayerWidth;
-        public const int secondPlayerStartY = 5;
-
-        public const int ConsoleHeight = 50;
-        public const int ConsoleWidth = 50;
+        public const int PlayerStartY = 25;
+        
+        public const int SecondPlayerStartX = (ConsoleWidth - 25) - PlayerWidth;
+        public const int SecondPlayerStartY = 5;
+        
+        public const int ConsoleHeight = 40;
+        public const int ConsoleWidth = 40;
 
         public const int PlayerHeight = 3;
         public const int PlayerWidth = 5;
@@ -21,7 +23,9 @@
         public const int TerrainCountOnMap = 15;
 
         public const int MachineGunDamage = 1;
-        
+        public const int RocketDamage = 10;
+        public const int BulletWithButterflyWingsDamage = 3;
+
         public const char WaterTerrain = '~';
         public const char BrickTerrain = 'E';
         public const char StoneTerrain = 'X';

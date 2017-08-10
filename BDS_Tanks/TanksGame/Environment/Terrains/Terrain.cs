@@ -1,4 +1,5 @@
 ﻿using TanksGame.Core.Contracts;
+using TanksGame.Environment.Contracts;
 using TanksGame.UI.Contracts;
 
 namespace TanksGame.Environment.Terrains
@@ -15,7 +16,7 @@ namespace TanksGame.Environment.Terrains
 
         public int Y { get; set; }
 
-        public abstract Texture Texture { get; }
+        public abstract IFigureTexture FigureTexture { get; }
 
         public abstract bool IsPassable { get; }
 

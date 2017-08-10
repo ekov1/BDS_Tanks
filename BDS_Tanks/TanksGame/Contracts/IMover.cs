@@ -4,6 +4,6 @@ namespace TanksGame.Contracts
 {
     public interface IMover
     {
-        void Move(IMovable obj, Direction direction);
+        bool Move(IMovable obj, Direction direction);
     }
 }
