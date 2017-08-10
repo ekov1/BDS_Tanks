@@ -26,6 +26,7 @@ namespace TanksGame.UI
             foreach (var line in body)
             {
                 Console.SetCursorPosition(cursorX, cursorY);
+
                 foreach (bool bit in line)
                 {
                     Console.Write(bit ? obj.Texture.Symbol : ' ');

@@ -58,6 +58,8 @@
     <Compile Include="Core\Factories\TankFactory.cs" />
     <Compile Include="Core\Providers\TerrainProvider.cs" />
     <Compile Include="Environment\Contracts\ITerrainGenerator.cs" />
+    <Compile Include="Environment\Contracts\IField.cs" />
+    <Compile Include="Environment\Field.cs" />
     <Compile Include="Environment\TerrainGenerator.cs" />
     <Compile Include="Environment\Terrains\Brick.cs" />
     <Compile Include="Environment\Terrains\NormalBrick.cs" />

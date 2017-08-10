@@ -34,12 +34,12 @@ namespace TanksGame.Core
             this.terrain = TerrainProvider.Instance;
             this.boolTemplateProvider = BoolTemplateProvider.Instace;
             this.terrainGenerator = TerrainGenerator.Instance;
-            this.mover = Mover.Instance;
-
+            
             this.drawer = new ConsoleDrawer();
             this.tankFactory = new TankFactory();
 
             this.terrain.Terrain = terrainGenerator.GenerateRandomMap(Constants.TerrainCountOnMap).ToList();
+            this.mover = Mover.Instance;
 
             Texture playerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
 
@@ -85,7 +85,6 @@ namespace TanksGame.Core
                 this.drawer.Draw(this.player);
                 this.drawer.Draw(this.terrain.Terrain);
                 this.drawer.Draw(this.player.Weapon);
-                
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();
