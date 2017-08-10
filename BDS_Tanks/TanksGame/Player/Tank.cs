@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using TanksGame.Common;
 using TanksGame.Contracts;
 using TanksGame.Environment;
@@ -10,6 +11,7 @@ namespace TanksGame.Player
     public class Tank : ITank, IMovable, IDrawable
     {
         private string name;
+        private IEnumerable<IProjectile> projectile;
 
         public Tank(int x, int y, Texture texture, IProjectile weapon)
         {
@@ -43,6 +45,11 @@ namespace TanksGame.Player
         public void Report()
         {
            
+        }
+
+        public void AddBullet()
+        {
+            
         }
     }
 }
