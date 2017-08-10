@@ -7,9 +7,9 @@ namespace TanksGame.Core.Factories
 {
     public class TankFactory : ITankFactory
     {
-        public ITank CreateTank(int x, int y, Texture texture, IProjectile weapon)
+        public ITank CreateTank(int x, int y, Texture texture)
         {
-            return new Tank(x, y, texture, weapon);
+            return new Tank(x, y, texture);
         }
     }
 }

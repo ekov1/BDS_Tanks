@@ -1,4 +1,5 @@
 ﻿using System;
+using TanksGame.Common;
 using TanksGame.Core.Contracts;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
@@ -10,7 +11,8 @@ namespace TanksGame.Projectiles
         IBoolTemplateProvider templateProvider;
         
 
-        public Rocket(int x, int y, int damage) : base(x, y, damage)
+        public Rocket(int x, int y) 
+            : base(x, y)
         {
             this.templateProvider = BoolTemplateProvider.Instace;
 
@@ -21,6 +23,14 @@ namespace TanksGame.Projectiles
             get
             {
                 return new Texture(this.templateProvider.GetBoolTemplate("rocket"), 'º', ConsoleColor.Red);
+            }
+        }
+
+        public override int Damage
+        {
+            get
+            {
+                return Constants.RocketDamage;
             }
         }
     }

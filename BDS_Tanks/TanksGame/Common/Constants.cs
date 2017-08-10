@@ -18,6 +18,7 @@
         public const int TerrainCountOnMap = 15;
 
         public const int MachineGunDamage = 1;
+        public const int RocketDamage = 10;
         
         public const char WaterTerrain = '~';
         public const char BrickTerrain = 'E';

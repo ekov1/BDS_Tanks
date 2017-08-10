@@ -44,8 +44,12 @@
   <ItemGroup>
     <Compile Include="Common\Mover.cs" />
     <Compile Include="Contracts\IMover.cs" />
+    <Compile Include="Contracts\IShooting.cs" />
+    <Compile Include="Core\Contracts\IProjectileFactory.cs" />
     <Compile Include="Core\Enums\HealthList.cs" />
+    <Compile Include="Core\Enums\ProjectileType.cs" />
     <Compile Include="Core\Enums\TerrainType.cs" />
+    <Compile Include="Core\Factories\ProjectileFactory.cs" />
     <Compile Include="Core\Providers\BoolTemplateReader.cs" />
     <Compile Include="Common\Constants.cs" />
     <Compile Include="Core\Contracts\IBoolTemplateReader.cs" />
