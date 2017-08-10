@@ -37,6 +37,14 @@ namespace TanksGame.Player
             }
         }
 
+        public bool DefenseMode
+        {
+            get
+            {
+                throw new NotImplementedException();
+            }
+        }
+
         public void Attack()
         {
            
@@ -52,7 +60,7 @@ namespace TanksGame.Player
 
             if (projectile == null)
             {
-                throw new NullReferenceException("Null machne can not be added");
+                throw new NullReferenceException("Null projectile can not be added");
             }
             this.projectiles.Add(projectile);
         }
