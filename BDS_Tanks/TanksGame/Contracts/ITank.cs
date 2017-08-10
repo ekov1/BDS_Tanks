@@ -3,9 +3,15 @@ using TanksGame.UI.Contracts;
 
 namespace TanksGame.Contracts
 {
-    public interface ITank : IMovable, IDrawable        
+    public interface ITank : IMovable, IDrawable
     {
-        IProjectile  Weapon { get; set; }
+        string Name
+        {
+            get;
+        }
+        IProjectile Weapon { get; set; }
         void Attack();
+
+        void Report();
     }
 }
