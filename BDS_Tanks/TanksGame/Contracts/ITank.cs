@@ -11,7 +11,7 @@ namespace TanksGame.Contracts
         }
         IProjectile Weapon { get; set; }
         void Attack();
-        void AddBullet();
+        void AddProjectile(IProjectile projectile);
 
         void Report();
     }

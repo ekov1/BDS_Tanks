@@ -11,7 +11,7 @@ namespace TanksGame.Player
     public class Tank : ITank, IMovable, IDrawable
     {
         private string name;
-        private IEnumerable<IProjectile> projectile;
+        private ICollection<IProjectile> projectiles;
 
         public Tank(int x, int y, Texture texture, IProjectile weapon)
         {
@@ -47,9 +47,16 @@ namespace TanksGame.Player
            
         }
 
-        public void AddBullet()
+        public void AddProjectile(IProjectile projectile)
         {
-            
+
+            if (projectile == null)
+            {
+                throw new NullReferenceException("Null machne can not be added");
+            }
+            this.projectiles.Add(projectile);
         }
+
+      
     }
 }
