@@ -9,6 +9,8 @@ namespace TanksGame.Player
 {
     public class Tank : ITank, IMovable, IDrawable
     {
+        private string name;
+
         public Tank(int x, int y, Texture texture, IProjectile weapon)
         {
             this.X = x;
@@ -25,9 +27,22 @@ namespace TanksGame.Player
         public int Y { get; set; }
         public IProjectile Weapon { get; set; }
 
+        public string Name
+        {
+            get
+            {
+                return this.name;
+            }
+        }
+
         public void Attack()
         {
-            throw new NotImplementedException();
+           
+        }
+
+        public void Report()
+        {
+           
         }
     }
 }
