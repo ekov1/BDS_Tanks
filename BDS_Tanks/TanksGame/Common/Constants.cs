@@ -5,6 +5,9 @@
         public const int PlayerStartX = ConsoleWidth/2 - PlayerWidth;
         public const int PlayerStartY = 40;
 
+        public const int secondPlayerStartX = (ConsoleWidth - 25) - PlayerWidth;
+        public const int secondPlayerStartY = 5;
+
         public const int ConsoleHeight = 50;
         public const int ConsoleWidth = 50;
 

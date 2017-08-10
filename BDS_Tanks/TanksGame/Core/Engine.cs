@@ -26,6 +26,7 @@ namespace TanksGame.Core
 
         private readonly ITankFactory tankFactory;
         private readonly ITank player;
+        private readonly ITank secondPlayer;
         private readonly IDrawer drawer;
 
         private Engine()
@@ -42,9 +43,14 @@ namespace TanksGame.Core
             this.mover = Mover.Instance;
 
             Texture playerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
+            Texture secondPlayerBody = new Texture(this.boolTemplateProvider.GetBoolTemplate("secondTank"), '█', ConsoleColor.Magenta);
 
+            // First Player !
             this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY, 
                 playerBody, new MachineGun(Constants.PlayerStartX,Constants.PlayerStartY,Constants.MachineGunDamage));
+            // Second Player !
+            this.secondPlayer = tankFactory.CreateTank(Constants.secondPlayerStartX, Constants.secondPlayerStartY,
+                secondPlayerBody, new MachineGun(Constants.secondPlayerStartX, Constants.secondPlayerStartY, Constants.MachineGunDamage));
         }
 
         public static IEngine Instance
@@ -62,32 +68,55 @@ namespace TanksGame.Core
                 if (Console.KeyAvailable)
                 {
                     ConsoleKey keyInfo = Console.ReadKey(true).Key;
-                    switch (keyInfo)
-                    {
-                        case ConsoleKey.W:
-                            this.mover.Move(this.player, Direction.Top);
-                            break;
-
-                        case ConsoleKey.A:
-                            this.mover.Move(this.player, Direction.Left);
-                            break;
-
-                        case ConsoleKey.S:
-                            this.mover.Move(this.player, Direction.Down);
-                            break;
-
-                        case ConsoleKey.D:
-                            this.mover.Move(this.player, Direction.Right);
-                            break;
-                    }
+                    Controls(keyInfo);
                 }
 
                 this.drawer.Draw(this.player);
+                this.drawer.Draw(this.secondPlayer);
                 this.drawer.Draw(this.terrain.Terrain);
                 this.drawer.Draw(this.player.Weapon);
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();
+            }
+        }
+        public void Controls(ConsoleKey keyInfo)
+        {
+            switch (keyInfo)
+            {
+                //First player controls !
+                case ConsoleKey.W:
+                    this.mover.Move(this.player, Direction.Top);
+                    break;
+
+                case ConsoleKey.A:
+                    this.mover.Move(this.player, Direction.Left);
+                    break;
+
+                case ConsoleKey.S:
+                    this.mover.Move(this.player, Direction.Down);
+                    break;
+
+                case ConsoleKey.D:
+                    this.mover.Move(this.player, Direction.Right);
+                    break;
+
+                //Second player controls !
+                case ConsoleKey.UpArrow:
+                    this.mover.Move(this.secondPlayer, Direction.Top);
+                    break;
+
+                case ConsoleKey.LeftArrow:
+                    this.mover.Move(this.secondPlayer, Direction.Left);
+                    break;
+
+                case ConsoleKey.DownArrow:
+                    this.mover.Move(this.secondPlayer, Direction.Down);
+                    break;
+
+                case ConsoleKey.RightArrow:
+                    this.mover.Move(this.secondPlayer, Direction.Right);
+                    break;
             }
         }
     }

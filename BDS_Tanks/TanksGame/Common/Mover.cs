@@ -42,45 +42,45 @@ namespace TanksGame.Common
         public void Move(IMovable obj, Direction direction)
         {
 
-            switch (direction)
-            {
-                case Direction.Top:
-                    foreach (var terr in this.terrain)
-                    {
-                        if (obj.Y - Constants.PlayerWidth == terr.Y)
-                        {
-                            return;
-                        }
-                    }
-                    break;
-                case Direction.Down:
-                    foreach (var terr in this.terrain)
-                    {
-                        if (obj.Y + 1 == terr.Y )
-                        {
-                            return;
-                        }
-                    }
-                    break;
-                case Direction.Left:
-                    foreach (var terr in this.terrain)
-                    {
-                        if (obj.X - 1 == terr.X)
-                        {
-                            return;
-                        }
-                    }
-                    break;
-                case Direction.Right:
-                    foreach (var terr in this.terrain)
-                    {
-                        if (obj.X + 1 == terr.X + Constants.TerrainHeight)
-                        {
-                            return;
-                        }
-                    }
-                    break;
-            }
+           //switch (direction)
+           //{
+           //    case Direction.Top:
+           //        foreach (var terr in this.terrain)
+           //        {
+           //            if (obj.Y - Constants.PlayerWidth == terr.Y)
+           //            {
+           //                return;
+           //            }
+           //        }
+           //        break;
+           //    case Direction.Down:
+           //        foreach (var terr in this.terrain)
+           //        {
+           //            if (obj.Y + 1 == terr.Y )
+           //            {
+           //                return;
+           //            }
+           //        }
+           //        break;
+           //    case Direction.Left:
+           //        foreach (var terr in this.terrain)
+           //        {
+           //            if (obj.X - 1 == terr.X)
+           //            {
+           //                return;
+           //            }
+           //        }
+           //        break;
+           //    case Direction.Right:
+           //        foreach (var terr in this.terrain)
+           //        {
+           //            if (obj.X + 1 == terr.X + Constants.TerrainHeight)
+           //            {
+           //                return;
+           //            }
+           //        }
+           //        break;
+           //}
 
             switch (direction)
             {

@@ -95,6 +95,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Bonuses\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
@@ -102,6 +103,7 @@
     <Content Include="UI\Visuals\rocket.txt" />
     <Content Include="UI\Visuals\tank.txt" />
     <Content Include="UI\Visuals\terrain.txt" />
+    <Content Include="UI\Visuals\secondTank.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
