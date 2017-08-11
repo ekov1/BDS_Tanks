@@ -54,12 +54,17 @@ namespace TanksGame.Environment
                     foreach (var item in terrainList)
                     {
                         if (currTerrain.X >= item.X && currTerrain.X <= item.X + 4 &&
-                            currTerrain.Y >= item.Y && currTerrain.X < item.Y + 4)
+                            currTerrain.Y >= item.Y && currTerrain.Y < item.Y + 4 &&
+                            currTerrain.X + 4 >= item.X && currTerrain.X + 4 <= item.X + 4 &&
+                            currTerrain.Y + 4 >= item.Y && currTerrain.Y + 4 < item.Y + 4)
                         {
                             flag = 0;
+                            break;
                         }
                         else
                         {
+                            //Console.WriteLine("aaaaaaa");
+                            //Console.ReadLine();
                             flag = 1;
                         }
                     }
@@ -77,19 +82,19 @@ namespace TanksGame.Environment
             this.field.OccupyField(x + 1, y);
             this.field.OccupyField(x + 2, y);
             this.field.OccupyField(x + 3, y);
-            this.field.OccupyField(x + 4, y);
+         //   this.field.OccupyField(x + 4, y);
 
             this.field.OccupyField(x, y + 1);
             this.field.OccupyField(x + 1, y + 1);
             this.field.OccupyField(x + 2, y + 1);
             this.field.OccupyField(x + 3, y + 1);
-            this.field.OccupyField(x + 4, y + 1);
+          //  this.field.OccupyField(x + 4, y + 1);
 
             this.field.OccupyField(x, y + 2);
             this.field.OccupyField(x + 1, y + 2);
             this.field.OccupyField(x + 2, y + 2);
             this.field.OccupyField(x + 3, y + 2);
-            this.field.OccupyField(x + 4, y + 2);
+         //   this.field.OccupyField(x + 4, y + 2);
         }
     }
 }
