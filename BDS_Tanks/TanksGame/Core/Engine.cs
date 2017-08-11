@@ -9,6 +9,7 @@ using TanksGame.Core.Factories;
 using TanksGame.Core.Providers;
 using TanksGame.Environment;
 using TanksGame.Environment.Contracts;
+using TanksGame.Player;
 using TanksGame.Projectiles;
 using TanksGame.UI;
 
@@ -46,6 +47,7 @@ namespace TanksGame.Core
 
 
             FigureTexture playerBody = new FigureTexture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
+            // TODO: generate oly for 2 player mode
             FigureTexture secondPlayerBody = new FigureTexture(this.boolTemplateProvider.GetBoolTemplate("secondTank"), '█', ConsoleColor.Magenta);
 
             // First Player !
@@ -111,10 +113,17 @@ namespace TanksGame.Core
                 case ConsoleKey.D:
                     this.mover.Move(this.player, Direction.Right);
                     break;
+
                 case ConsoleKey.Spacebar:
+                    Tank.ShootSound();
                     IProjectile firstPlayerProjectile = this.projectileFactory.CreateProjectile(this.player.WeaponType, this.player.X + Constants.PlayerWidth / 2, this.player.Y, Direction.Top);
                     this.player.FiredProjectiles.Add(firstPlayerProjectile);
                     break;
+
+                case ConsoleKey.D1:
+                    Tank.Report();
+                    break;
+
                 //Second player controls !
                 case ConsoleKey.UpArrow:
                     this.mover.Move(this.secondPlayer, Direction.Top);
@@ -131,9 +140,15 @@ namespace TanksGame.Core
                 case ConsoleKey.RightArrow:
                     this.mover.Move(this.secondPlayer, Direction.Right);
                     break;
+
                 case ConsoleKey.Enter:
                     IProjectile secondPlayerProjectile = this.projectileFactory.CreateProjectile(this.secondPlayer.WeaponType, this.secondPlayer.X + Constants.PlayerWidth / 2, this.secondPlayer.Y, Direction.Down);
                     this.secondPlayer.FiredProjectiles.Add(secondPlayerProjectile);
+                    Tank.ShootSound();
+                    break;
+
+                case ConsoleKey.NumPad0:
+                    Tank.Report();
                     break;
             }
         }
