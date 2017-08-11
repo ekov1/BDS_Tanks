@@ -16,8 +16,8 @@
         public const int PlayerHeight = 3;
         public const int PlayerWidth = 5;
 
-        public const int TerrainHeight = 3;
-        public const int TerrainWidth = 5;
+        public const int TerrainHeight = 4;
+        public const int TerrainWidth = 4;
 
         public const int ThreadSleep = 10;
         public const int TerrainCountOnMap = 15;

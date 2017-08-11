@@ -14,7 +14,7 @@ namespace TanksGame.Environment
         private static readonly TerrainGenerator instance = new TerrainGenerator();
         private IField field;
         private ITerrainFactory terrainFactory;
-        
+
         private TerrainGenerator()
         {
             this.terrainFactory = new TerrainFactory();
@@ -38,14 +38,33 @@ namespace TanksGame.Environment
 
             for (int i = 0; i < terrainElementsCount; i++)
             {
-                // TODO: How to decouple with Constants ? How to inject Random for testibility (Wrap it in interace? / i think so ( Mariyan ))
-                int randomTerrain = randomGen.Next(0, enumLength);
-                int randomX = randomGen.Next(0, Constants.ConsoleWidth - Constants.TerrainWidth);
-                int randomY = randomGen.Next(0, Constants.ConsoleHeight - Constants.TerrainHeight);
+                var flag = 1;
+                Terrain currTerrain;
+                do
+                {
+                    // TODO: How to decouple with Constants ? How to inject Random for testibility (Wrap it in interace? / i think so ( Mariyan ))
+                    int randomTerrain = randomGen.Next(0, enumLength);
+                    int randomX = randomGen.Next(0, Constants.ConsoleWidth - Constants.TerrainWidth);
+                    int randomY = randomGen.Next(0, Constants.ConsoleHeight - Constants.TerrainHeight);
 
-                FillField(randomX, randomY);
+                    FillField(randomX, randomY);
 
-                Terrain currTerrain = this.terrainFactory.CreateTerrain((TerrainType)randomTerrain, randomX, randomY);
+                    currTerrain = this.terrainFactory.CreateTerrain((TerrainType)randomTerrain, randomX, randomY);
+
+                    foreach (var item in terrainList)
+                    {
+                        if (currTerrain.X >= item.X && currTerrain.X <= item.X + 4 &&
+                            currTerrain.Y >= item.Y && currTerrain.X < item.Y + 4)
+                        {
+                            flag = 0;
+                        }
+                        else
+                        {
+                            flag = 1;
+                        }
+                    }
+                } while (flag < 1);
+
                 terrainList.Add(currTerrain);
             }
 
@@ -65,7 +84,7 @@ namespace TanksGame.Environment
             this.field.OccupyField(x + 2, y + 1);
             this.field.OccupyField(x + 3, y + 1);
             this.field.OccupyField(x + 4, y + 1);
-                                   
+
             this.field.OccupyField(x, y + 2);
             this.field.OccupyField(x + 1, y + 2);
             this.field.OccupyField(x + 2, y + 2);
