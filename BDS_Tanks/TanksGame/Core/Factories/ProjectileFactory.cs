@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using TanksGame.Contracts;
+﻿using TanksGame.Contracts;
 using TanksGame.Core.Contracts;
 using TanksGame.Core.Enums;
 using TanksGame.Projectiles;
@@ -20,6 +15,7 @@ namespace TanksGame.Core.Factories
                     return new MachineGun(x, y, direction);
                 case ProjectileType.Rocket:
                     return new Rocket(x, y, direction);
+                    // default ?
                 default:
                     return new MachineGun(x, y, direction);
             }

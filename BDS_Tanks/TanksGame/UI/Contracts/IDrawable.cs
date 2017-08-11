@@ -1,6 +1,4 @@
-﻿using TanksGame.Environment;
-using TanksGame.Environment.Contracts;
-using TanksGame.UI.Contracts;
+﻿using TanksGame.Environment.Contracts;
 
 namespace TanksGame.UI.Contracts
 {

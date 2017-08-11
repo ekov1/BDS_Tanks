@@ -1,6 +1,9 @@
-﻿namespace TanksGame.Environment.Terrains
+﻿using TanksGame.Core.Contracts;
+using TanksGame.UI.Contracts;
+
+namespace TanksGame.Environment.Terrains
 {
-    public abstract class Brick : Terrain
+    public abstract class Brick : Terrain, ITerrain, IDrawable, IPosition
     {
         private int health;
         private bool isDestroyed;

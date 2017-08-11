@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using TanksGame.Core.Contracts;
-using TanksGame.Environment.Terrains;
 
 namespace TanksGame.Core.Providers
 {
@@ -10,7 +9,7 @@ namespace TanksGame.Core.Providers
 
         private TerrainProvider()
         {
-            this.Terrain = new List<Terrain>();
+            this.Terrain = new List<ITerrain>();
         }
 
         public static TerrainProvider Instance
@@ -21,6 +20,6 @@ namespace TanksGame.Core.Providers
             }
         }
 
-        public ICollection<Terrain> Terrain { get; set; }
+        public ICollection<ITerrain> Terrain { get; set; }
     }
 }

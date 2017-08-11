@@ -1,18 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Linq;
+using TanksGame.Core.Contracts;
+using TanksGame.Core.Providers;
 using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Environment
 {
-    // TODO: If enough time refactor it so it can work faster with bool matrix!
     public class Field : IField
     {
         private static readonly IField instance = new Field();
-        private ICollection<bool> occupiedFields;
+        public ICollection<IEnumerable<bool>> occupiedFields;
+        private readonly IBoolTemplateProvider boolTemplateProvider;
+        private List<List<bool>> casted;
 
         private Field()
         {
-            occupiedFields = new List<bool>();
+            this.boolTemplateProvider = BoolTemplateProvider.Instace;
+            this.occupiedFields = this.boolTemplateProvider.GetBoolTemplate("field");
+            this.casted = this.occupiedFields.Select(l => l.ToList()).ToList();
         }
 
         public static IField Instance
@@ -23,28 +28,23 @@ namespace TanksGame.Environment
             }
         }
 
-        public IEnumerable<bool> OccupiedFields
+        // Need to return interface ! And new instance instead of the existing one !
+        public List<List<bool>> OccupiedFields
         {
             get
             {
-                return new List<bool>(this.occupiedFields);
+                return this.casted;
             }
         }
 
         public void OccupyField(int offsetX, int offsetY)
         {
-            var occupiedField = Convert.ToString(offsetY) + Convert.ToString(offsetX);
-           // this.occupiedFields.Add(occupiedField);
+            this.casted[offsetY][offsetX] = true;
         }
-        
+
         public void UnOccupyField(int offsetX, int offsetY)
         {
-            var occupiedField = Convert.ToString(offsetY) + Convert.ToString(offsetX);
-        
-           //if (this.occupiedFields.Contains(occupiedField))
-           //{
-           //    this.occupiedFields.Remove(occupiedField);
-           //}
+            this.casted[offsetY][offsetX] = false;
         }
     }
 }

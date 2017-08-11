@@ -5,7 +5,6 @@ namespace TanksGame.Core.Contracts
 {
     public interface ITankFactory
     {
-
         ITank CreateTank(int x, int y, IFigureTexture texture);
     }
 }

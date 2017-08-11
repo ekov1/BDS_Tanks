@@ -14,6 +14,7 @@ namespace TanksGame.Environment
         }
 
         public char Symbol { get ; set; }
+
         public ConsoleColor Color { get; set ; }
     }
 }

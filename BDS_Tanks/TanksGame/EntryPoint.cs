@@ -1,5 +1,4 @@
-﻿using System.Media;
-using TanksGame.Core;
+﻿using TanksGame.Core;
 
 namespace TanksGame
 {

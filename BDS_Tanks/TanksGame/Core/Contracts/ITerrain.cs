@@ -1,9 +1,8 @@
-﻿using TanksGame.UI;
-using TanksGame.UI.Contracts;
+﻿using TanksGame.UI.Contracts;
 
 namespace TanksGame.Core.Contracts
 {
-    public interface ITerrain : IDrawable
+    public interface ITerrain : IDrawable, IPosition
     {
         bool IsPassable { get; }
 

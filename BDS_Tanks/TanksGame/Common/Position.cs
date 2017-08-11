@@ -2,6 +2,7 @@
 
 namespace TanksGame.Common
 {
+    // ?
     public class Position
     {
         private int x;

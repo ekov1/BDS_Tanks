@@ -1,35 +1,24 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using TanksGame.Contracts;
 using TanksGame.Core.Contracts;
 using TanksGame.Core.Enums;
 using TanksGame.Core.Providers;
-using TanksGame.Environment.Terrains;
+using TanksGame.Environment;
+using TanksGame.Environment.Contracts;
 
 namespace TanksGame.Common
 {
     public class Mover : IMover
     {
         private static readonly Mover instance = new Mover();
-        private readonly IEnumerable<Terrain> terrain;
+        private readonly IEnumerable<ITerrain> terrain;
+        private IField field;
 
         private Mover()
         {
             this.terrain = TerrainProvider.Instance.Terrain;
-        }
-        
-        private IEnumerable<int> OccupiedFields()
-        {
-            var occupiedFieldsX = new List<int>();
-
-            foreach (var terr in terrain)
-            {
-
-            }
-
-
-            return null;
+            this.field = Field.Instance;
         }
 
         public static Mover Instance
@@ -40,49 +29,14 @@ namespace TanksGame.Common
             }
         }
 
-        public bool Move(IMovable obj, Direction direction)
+        // TODO: Implement moving projectiles
+        public void MoveProjectile()
         {
+            throw new NotImplementedException();
+        }
 
-
-            //switch (direction)
-            //{
-            //    case Direction.Top:
-            //        foreach (var terr in this.terrain)
-            //        {
-            //            if (obj.Y - Constants.PlayerWidth == terr.Y)
-            //            {
-            //                return;
-            //            }
-            //        }
-            //        break;
-            //    case Direction.Down:
-            //        foreach (var terr in this.terrain)
-            //        {
-            //            if (obj.Y + 1 == terr.Y )
-            //            {
-            //                return;
-            //            }
-            //        }
-            //        break;
-            //    case Direction.Left:
-            //        foreach (var terr in this.terrain)
-            //        {
-            //            if (obj.X - 1 == terr.X)
-            //            {
-            //                return;
-            //            }
-            //        }
-            //        break;
-            //    case Direction.Right:
-            //        foreach (var terr in this.terrain)
-            //        {
-            //            if (obj.X + 1 == terr.X + Constants.TerrainHeight)
-            //            {
-            //                return;
-            //            }
-            //        }
-            //        break;
-            //}
+        public bool MoveTank(IMovable obj, Direction direction)
+        {
             bool collide = true;
 
             switch (direction)
@@ -116,9 +70,8 @@ namespace TanksGame.Common
                     }
                     break;
             }
+
             return collide;
-            
         }
-        
     }
 }

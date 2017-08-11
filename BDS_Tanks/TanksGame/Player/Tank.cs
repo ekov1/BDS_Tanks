@@ -1,14 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Media;
-using System.Speech.Synthesis;
 using System.Threading.Tasks;
-using TanksGame.Common;
 using TanksGame.Contracts;
 using TanksGame.Core.Enums;
-using TanksGame.Environment;
 using TanksGame.Environment.Contracts;
-using TanksGame.Projectiles;
 using TanksGame.UI.Contracts;
 
 namespace TanksGame.Player

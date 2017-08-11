@@ -10,7 +10,6 @@ using TanksGame.Core.Providers;
 using TanksGame.Environment;
 using TanksGame.Environment.Contracts;
 using TanksGame.Player;
-using TanksGame.Projectiles;
 using TanksGame.UI;
 
 namespace TanksGame.Core
@@ -21,13 +20,11 @@ namespace TanksGame.Core
 
         private readonly IEnemiesProvider enemies;
         private readonly ITerrainProvider terrain;
-        private readonly IBoolTemplateProvider boolTemplateProvider;
         private readonly ITerrainGenerator terrainGenerator;
         private readonly IMover mover;
-
-        private readonly ITankFactory tankFactory;
+        
         private readonly IProjectileFactory projectileFactory;
-        private readonly ITank player;
+        private readonly ITank firstPlayer;
         private readonly ITank secondPlayer;
         private readonly IDrawer drawer;
 
@@ -35,29 +32,17 @@ namespace TanksGame.Core
         {
             this.enemies = EnemiesProvider.Instance;
             this.terrain = TerrainProvider.Instance;
-            this.boolTemplateProvider = BoolTemplateProvider.Instace;
+
             this.terrainGenerator = TerrainGenerator.Instance;
 
             this.drawer = new ConsoleDrawer();
-            this.tankFactory = new TankFactory();
             this.projectileFactory = new ProjectileFactory();
 
             this.terrain.Terrain = terrainGenerator.GenerateRandomMap(Constants.TerrainCountOnMap).ToList();
             this.mover = Mover.Instance;
 
-
-            FigureTexture playerBody = new FigureTexture(this.boolTemplateProvider.GetBoolTemplate("tank"), '█', ConsoleColor.Green);
-            // TODO: generate oly for 2 player mode
-            FigureTexture secondPlayerBody = new FigureTexture(this.boolTemplateProvider.GetBoolTemplate("secondTank"), '█', ConsoleColor.Magenta);
-
-            // First Player !
-            this.player = tankFactory.CreateTank(Constants.PlayerStartX, Constants.PlayerStartY,
-                playerBody);
-            // Second Player !
-            this.secondPlayer = tankFactory.CreateTank(Constants.SecondPlayerStartX, Constants.SecondPlayerStartY,
-                secondPlayerBody);
-
-
+            this.firstPlayer = this.terrainGenerator.GenerateFirstPlayer();
+            this.secondPlayer = this.terrainGenerator.GenerateSecondPlayer();
         }
 
         public static IEngine Instance
@@ -79,45 +64,46 @@ namespace TanksGame.Core
                     Controls(keyInfo);
                 }
 
-                MoveProjectile(player);
+                MoveProjectile(firstPlayer);
                 MoveProjectile(secondPlayer);
 
 
-                this.drawer.Draw(this.player);
+                this.drawer.Draw(this.firstPlayer);
                 this.drawer.Draw(this.secondPlayer);
                 this.drawer.Draw(this.terrain.Terrain);
-                this.drawer.Draw(this.player.FiredProjectiles);
+                this.drawer.Draw(this.firstPlayer.FiredProjectiles);
                this.drawer.Draw(this.secondPlayer.FiredProjectiles);
 
                 Thread.Sleep(Constants.ThreadSleep);
                 Console.Clear();
             }
         }
+
         public void Controls(ConsoleKey keyInfo)
         {
             switch (keyInfo)
             {
                 //First player controls !
                 case ConsoleKey.W:
-                    this.mover.Move(this.player, Direction.Top);
+                    this.mover.MoveTank(this.firstPlayer, Direction.Top);
                     break;
 
                 case ConsoleKey.A:
-                    this.mover.Move(this.player, Direction.Left);
+                    this.mover.MoveTank(this.firstPlayer, Direction.Left);
                     break;
 
                 case ConsoleKey.S:
-                    this.mover.Move(this.player, Direction.Down);
+                    this.mover.MoveTank(this.firstPlayer, Direction.Down);
                     break;
 
                 case ConsoleKey.D:
-                    this.mover.Move(this.player, Direction.Right);
+                    this.mover.MoveTank(this.firstPlayer, Direction.Right);
                     break;
 
                 case ConsoleKey.Spacebar:
                     Tank.ShootSound();
-                    IProjectile firstPlayerProjectile = this.projectileFactory.CreateProjectile(this.player.WeaponType, this.player.X + Constants.PlayerWidth / 2, this.player.Y, Direction.Top);
-                    this.player.FiredProjectiles.Add(firstPlayerProjectile);
+                    IProjectile firstPlayerProjectile = this.projectileFactory.CreateProjectile(this.firstPlayer.WeaponType, this.firstPlayer.X + Constants.PlayerWidth / 2, this.firstPlayer.Y, Direction.Top);
+                    this.firstPlayer.FiredProjectiles.Add(firstPlayerProjectile);
                     break;
 
                 case ConsoleKey.D1:
@@ -126,19 +112,19 @@ namespace TanksGame.Core
 
                 //Second player controls !
                 case ConsoleKey.UpArrow:
-                    this.mover.Move(this.secondPlayer, Direction.Top);
+                    this.mover.MoveTank(this.secondPlayer, Direction.Top);
                     break;
 
                 case ConsoleKey.LeftArrow:
-                    this.mover.Move(this.secondPlayer, Direction.Left);
+                    this.mover.MoveTank(this.secondPlayer, Direction.Left);
                     break;
 
                 case ConsoleKey.DownArrow:
-                    this.mover.Move(this.secondPlayer, Direction.Down);
+                    this.mover.MoveTank(this.secondPlayer, Direction.Down);
                     break;
 
                 case ConsoleKey.RightArrow:
-                    this.mover.Move(this.secondPlayer, Direction.Right);
+                    this.mover.MoveTank(this.secondPlayer, Direction.Right);
                     break;
 
                 case ConsoleKey.Enter:
@@ -152,11 +138,12 @@ namespace TanksGame.Core
                     break;
             }
         }
+
         public void MoveProjectile(ITank tank)
         {
              tank.FiredProjectiles.ToList().ForEach(p =>
             {
-                if (this.mover.Move(p, p.Direction))
+                if (this.mover.MoveTank(p, p.Direction))
                 {
                     tank.FiredProjectiles.Remove(p);
                 }

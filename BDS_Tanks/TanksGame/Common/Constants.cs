@@ -4,11 +4,11 @@
     {
         public const int TankSpeed = 2;
 
-        public const int PlayerStartX = ConsoleWidth/2 - PlayerWidth;
-        public const int PlayerStartY = 25;
+        public const int FirstPlayerTankStartX = ConsoleWidth/2 - PlayerWidth;
+        public const int FirstPlayerTankStartY = 25;
         
-        public const int SecondPlayerStartX = (ConsoleWidth - 25) - PlayerWidth;
-        public const int SecondPlayerStartY = 5;
+        public const int SecondPlayerTankStartX = (ConsoleWidth - 25) - PlayerWidth;
+        public const int SecondPlayerTankStartY = 5;
         
         public const int ConsoleHeight = 40;
         public const int ConsoleWidth = 40;

@@ -1,10 +1,10 @@
-﻿using TanksGame.Core.Enums;
-using TanksGame.Environment.Terrains;
+﻿using TanksGame.Core.Contracts;
+using TanksGame.Core.Enums;
 
 namespace TanksGame.Contracts
 {
     public interface ITerrainFactory
     {
-        Terrain CreateTerrain(TerrainType type, int x, int y);
+        ITerrain CreateTerrain(TerrainType type, int x, int y);
     }
 }

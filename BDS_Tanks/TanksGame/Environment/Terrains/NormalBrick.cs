@@ -7,7 +7,7 @@ namespace TanksGame.Environment.Terrains
 {
     public class NormalBrick : Brick
     {
-        private int health;
+        private int health; // Should be in Terrain and give it through the constructor
 
         public NormalBrick(int startX, int startY)
             : base(startX, startY)

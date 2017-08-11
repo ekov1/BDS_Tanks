@@ -10,6 +10,6 @@ namespace TanksGame.Environment
             this.Body = body;
         }
 
-        public ICollection<IEnumerable<bool>> Body { get; }
+        public ICollection<IEnumerable<bool>> Body { get; private set; }
     }
 }

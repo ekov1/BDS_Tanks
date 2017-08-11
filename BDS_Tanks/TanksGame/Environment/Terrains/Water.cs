@@ -1,10 +1,12 @@
 ﻿using System;
+using TanksGame.Core.Contracts;
 using TanksGame.Core.Providers;
 using TanksGame.Environment.Contracts;
+using TanksGame.UI.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {
-    public class Water : Terrain
+    public class Water : Terrain, ITerrain, IDrawable, IPosition
     {
         public Water(int startX, int startY)
             : base(startX, startY)

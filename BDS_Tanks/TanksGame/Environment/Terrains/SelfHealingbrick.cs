@@ -1,11 +1,13 @@
 ﻿using System;
+using TanksGame.Core.Contracts;
 using TanksGame.Core.Enums;
 using TanksGame.Core.Providers;
 using TanksGame.Environment.Contracts;
+using TanksGame.UI.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {
-    public class SelfHealingbrick : Brick
+    public class SelfHealingbrick : Brick, ITerrain, IDrawable, IPosition
     {
         private int health;
 

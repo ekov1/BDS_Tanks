@@ -1,4 +1,5 @@
 ﻿using TanksGame.Contracts;
+using TanksGame.Core.Contracts;
 using TanksGame.Core.Enums;
 using TanksGame.Environment.Terrains;
 
@@ -6,7 +7,7 @@ namespace TanksGame.Core.Factories
 {
     public class TerrainFactory : ITerrainFactory
     {
-        public Terrain CreateTerrain(TerrainType type, int x, int y)
+        public ITerrain CreateTerrain(TerrainType type, int x, int y)
         {
             switch (type)
             {
@@ -21,7 +22,7 @@ namespace TanksGame.Core.Factories
                 case TerrainType.Water:
                     return new Water(x, y);
                 default:
-                    // create stone by default
+                    // create stone by default ?!
                     return new Stone(x, y);
             }
         }

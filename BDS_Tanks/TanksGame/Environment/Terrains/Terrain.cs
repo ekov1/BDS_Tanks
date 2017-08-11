@@ -4,7 +4,7 @@ using TanksGame.UI.Contracts;
 
 namespace TanksGame.Environment.Terrains
 {
-    public abstract class Terrain : ITerrain, IDrawable
+    public abstract class Terrain : ITerrain, IDrawable, IPosition
     {
         public Terrain(int startX, int startY)
         {
